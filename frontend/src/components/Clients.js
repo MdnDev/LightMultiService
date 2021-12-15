@@ -1,16 +1,19 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBCol } from 'mdb-react-ui-kit';
 
-const Clients = () => {
+const Clients = ({ client }) => {
     return (
-        <Card className="my-3 p-3 rounded">
-            <Card.Img src="../../images/BMC2.jpg" />
-            <Card.Body>
-                <Card.Title>
-                    Société Prototype
-                </Card.Title>
-            </Card.Body>
-        </Card>
+        <div >
+            <MDBCol className="py-2">
+            <MDBCard style={{ width: '18rem' }}>
+                <MDBCardImage src={client.image} alt='...' position='top' />
+                <MDBCardBody>
+                <MDBCardTitle>{client.name}</MDBCardTitle>
+                </MDBCardBody>
+            </MDBCard>
+            </MDBCol>
+            
+        </div>
     )
 }
 

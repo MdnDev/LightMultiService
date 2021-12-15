@@ -1,10 +1,21 @@
-import React from 'react'
-import { MDBRow, MDBCol, MDBContainer, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtnGroup, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownLink } from "mdb-react-ui-kit";
-import { Col, Card, Button, Row } from 'react-bootstrap'
-import Products from '../components/Products';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { MDBRow, MDBCol, MDBContainer, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import NavBar from '../components/NavBar';
+import Product from '../components/Product';
 
 const GearScreen = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const { data } = await axios.get('/api/products')
+
+            setProducts(data)
+        }
+        fetchProducts()
+    }, [])
+
     return (
         <div >
             <h1 className="py-3">Famille d'article</h1>
@@ -30,9 +41,9 @@ const GearScreen = () => {
                 <MDBRow className="py-4">
                     <MDBCol  xs="12" sm="12" md="9" lg="9" xl="9">
                     <MDBRow >
-                    {Array.from({ length: 12 }).map((_, idx) => (
+                    {products.map(product => (
                         <MDBCol sm={12} md={12} lg={4} xl={3}>
-                        <Products style={{ width: '100%'}}/>
+                        <Product product={product} style={{ width: '100%'}}/>
                         </MDBCol>
                     ))}
                     </MDBRow>

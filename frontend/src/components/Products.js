@@ -1,14 +1,14 @@
 import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardImage, MDBCol } from 'mdb-react-ui-kit';
 
-const Products = () => {
+const Products = ({ product }) => {
     return (
         <div >
             <MDBCol className="py-2">
-            <MDBCard style={{ width: '13rem' }}>
-                <MDBCardImage src='../../images/hmi1.jpg' alt='...' position='top' />
+            <MDBCard style={{ width: '18rem' }}>
+                <MDBCardImage src={product.image} alt='...' position='top' />
                 <MDBCardBody>
-                <MDBCardTitle>Card title</MDBCardTitle>
+                <MDBCardTitle>{product.name}</MDBCardTitle>
                 </MDBCardBody>
             </MDBCard>
             </MDBCol>

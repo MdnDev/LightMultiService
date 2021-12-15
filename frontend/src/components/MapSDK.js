@@ -1,9 +1,9 @@
 import React from 'react'
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import dotenv from 'dotenv'
 
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2bGFicyIsImEiOiJja3dxaXpweXkwbjV6MnB1c3FzMnc2dmExIn0.M76eBYXq7_OwI6osSnhNrw';
+mapboxgl.accessToken = process.env.REACT_APP_MAP_SDK_KEY;
 
 const MapSDK = () => {
 

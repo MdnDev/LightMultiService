@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Container, Row, Col, Carousel, Card, Button } from 'react-bootstrap';
 import { MDBContainer } from 'mdb-react-ui-kit'
 import Clients from '../components/Clients';
+import Products from '../components/Products';
+
 
 
 
 const HomeScreen = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const { data } = await axios.get('/api/products')
+
+            setProducts(data)
+        }
+        fetchProducts()
+    }, [])
+
+    const [clients, setClients] = useState([])
+
+    useEffect(() => {
+        const fetchClients = async () => {
+            const { data } = await axios.get('/api/clients')
+
+            setClients(data)
+        }
+        fetchClients()
+    }, [])
+
     return (
         < div className=' px-0' >
             <Row variant="bg-dark">
@@ -92,21 +117,14 @@ const HomeScreen = () => {
                 </div>
             </Row>
 
-            <Row xs={1} md={2} className="g-4">
-                {Array.from({ length: 4 }).map((_, idx) => (
-                    <Col sm={12} md={6} lg={4} xl={3}>
-                    <Card style={{ maxWidth: '22rem' }}>
-                        <Card.Img className="mx-auto" style={{ maxWidth: '15rem' }} variant="top" src="../../images/protProduct1.jpg"/>
-                        <Card.Body>
-                        <Card.Title className="text-center py-4">Card title</Card.Title>
-                        <div className="text-center">
-                            <Button className="text-center my-2" variant="success">Go somewhere</Button>
-                        </div>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-                ))}
+            <Row >
+                {products.map(product => (
+                        <Col sm={12} md={12} lg={3} xl={3}>
+                        <Products product={product} style={{ width: '100%'}}/>
+                        </Col>
+                    ))}
             </Row>
+
             <div className="text-center py-4">
                 <Button variant="success">
                     EXPLORER
@@ -122,37 +140,11 @@ const HomeScreen = () => {
             </Row>
 
             <Row>
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
-
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
-
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
-
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
-
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
-
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
-                
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
-
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <Clients></Clients>
-                </Col>
+                {clients.map(client => (
+                        <Col sm={12} md={12} lg={3} xl={3}>
+                        <Clients client={client} style={{ width: '100%'}}/>
+                        </Col>
+                    ))}
                 
             </Row>
 

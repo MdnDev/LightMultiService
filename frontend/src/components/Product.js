@@ -1,10 +1,16 @@
 import React from 'react';
-import { MDBCard, MDBCardImage } from 'mdb-react-ui-kit'
+import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle } from 'mdb-react-ui-kit'
 
-const Product = () => {
+const Product = ({ product }) => {
     return (
-        <MDBCard className="my-4 mx-auto" style={{ maxWidth: '22rem' }}>
-                <MDBCardImage src='../../images/hmi1.jpg' alt='...' position='top' />
+        <MDBCard className="mx-auto" style={{ width: '13rem'}}>
+            <a href={`/products/${product._id}`}>
+                <MDBCardImage src={product.image} alt='...' position='top' style={{width: '100%'}} />
+            </a>
+            <MDBCardBody>
+                <MDBCardTitle>{product.name}</MDBCardTitle>
+                </MDBCardBody>
+                
         </MDBCard>
     )
 }
