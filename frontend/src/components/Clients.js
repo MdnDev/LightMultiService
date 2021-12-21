@@ -9,6 +9,7 @@ const Clients = ({ client }) => {
                 <MDBCardImage src={client.image} alt='...' position='top' />
                 <MDBCardBody>
                 <MDBCardTitle>{client.name}</MDBCardTitle>
+                <p>change</p>
                 </MDBCardBody>
             </MDBCard>
             </MDBCol>
