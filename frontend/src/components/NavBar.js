@@ -1,14 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React , { useState, useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap'
 
 
 const NavBar = () => {
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+       const fetchCategories = async () => {
+           const { data } = await axios.get('/api/categories')
+
+           setCategories(data)
+       }
+
+       fetchCategories()
+    }, [])
     return (
         <div>
-        {Array.from({ length: 8 }).map((_, idx) => (
-        <Dropdown className="py-1">
+        {categories.map(category => (
+        <Dropdown key={category._id} className="py-1">
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button
+                {category.name}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

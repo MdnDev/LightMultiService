@@ -28,4 +28,4 @@ const clients = [
     },
 ]
 
-module.exports = clients
+export default clients

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Container, Row, Col, Carousel, Card, Button } from 'react-bootstrap';
-import { MDBContainer } from 'mdb-react-ui-kit'
+import { Row, Col, Carousel, Button } from 'react-bootstrap';
 import Clients from '../components/Clients';
 import Products from '../components/Products';
 
@@ -46,7 +45,7 @@ const HomeScreen = () => {
                         <img
                         style={{height: '800px', width: '450px'}}
                         className="d-block w-100"
-                        src="../../images/protPartner.jpg"
+                        src="../../images/Materiel9.jpg"
                         alt="First slide"
                         />
                         <Carousel.Caption>
@@ -119,7 +118,7 @@ const HomeScreen = () => {
 
             <Row >
                 {products.map(product => (
-                        <Col sm={12} md={12} lg={3} xl={3}>
+                        <Col key={product._id} sm={12} md={12} lg={3} xl={3}>
                         <Products product={product} style={{ width: '100%'}}/>
                         </Col>
                     ))}
@@ -141,7 +140,7 @@ const HomeScreen = () => {
 
             <Row>
                 {clients.map(client => (
-                        <Col sm={12} md={12} lg={3} xl={3}>
+                        <Col key={client._id} sm={12} md={12} lg={3} xl={3}>
                         <Clients client={client} style={{ width: '100%'}}/>
                         </Col>
                     ))}

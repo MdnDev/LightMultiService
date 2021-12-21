@@ -1,7 +1,7 @@
 import React from 'react';
-import { Row, Col, Container, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import { MDBRow, MDBCol, MDBContainer} from "mdb-react-ui-kit";
-import GearNav from '../components/NavBar';
+
 
 
 const About = () => {
@@ -27,13 +27,13 @@ const About = () => {
                     </MDBContainer>
                 </MDBCol>
                 <MDBCol xs="6" sm="12" md="12" lg="6" >
-                    <img  style={{width: '100%'}} src="../../images/protPartner3.jpg" fluid/>
+                    <img  style={{width: '100%'}} src="../../images/protPartner3.jpg" alt="alt" fluid/>
                 </MDBCol>
             </MDBRow>
 
             <MDBRow style={{backgroundColor: 'honeydew'}}>
                 <MDBCol xs="12" sm="12" md="12" lg="6" >
-                    <img style={{width: '100%'}} src="../../images/protPartner.jpg"/>
+                    <img style={{width: '100%'}} src="../../images/protPartner.jpg" alt="alt"/>
                 </MDBCol>
                 <MDBCol xs="12" sm="12" md="12" lg="6" >
                     <MDBContainer className="py-5">

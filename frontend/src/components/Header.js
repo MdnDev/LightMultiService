@@ -11,8 +11,8 @@ import { MDBNavbarBrand } from 'mdb-react-ui-kit';
 const Header = () => {
     return (
         
-        <Navbar className="" bg="light" variant="dark" expand="lg" collapseOnSelect>
-        <Container >
+        <Navbar className="" bg="light" variant="dark" expand="lg" collapseOnSelect >
+        <Container style={{backgroundColor: '#94F29F'}}>
             <div className="mx-auto" >
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse  id="basic-navbar-nav">

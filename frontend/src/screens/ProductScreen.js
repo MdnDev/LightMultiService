@@ -1,12 +1,29 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'
-import Product from '../components/Product';
 import Description from '../components/Description';
+import { useParams } from 'react-router-dom';
+
+
+
 
 
 
 const ProductScreen = () => {
+    const [product, setProduct] = useState({})
+
+    const params = useParams()
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await axios.get(`/api/products/${params.id}`)
+
+            setProduct(data)
+        }
+        fetchProduct()
+    }, [params])
+
     return (
         <Container className="py-5">
             <Row >
@@ -16,17 +33,17 @@ const ProductScreen = () => {
                         <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
                         <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
                     </MDBBreadcrumb>
-                    <Product />
+                    <Image src={product.image} alt={product.name} fluid/>
                 </Col>
                 <Col xs="12" sm="12" md="12" lg="6" xl="6">
-                    <h1 className="mb-3">NOM DE L'ARTICLE</h1>
+                    <h3 className="mb-3">{product.name}</h3>
                     <Description />
                     <div className="d-flex my-5">
                         <h5 className="mt-1">Catégories:</h5>
                         <div className="d-flex">
-                            <a href="#">Cat1, </a>
-                            <a href="#">Cat1, </a>
-                            <a href="#">Cat1</a>
+                            <p>Cat1, </p>
+                            <p>Cat1, </p>
+                            <p>Cat1</p>
                         </div>
                     </div>
                 </Col>

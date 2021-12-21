@@ -3,9 +3,9 @@ import { MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle } from 'mdb-react-ui-k
 
 const Product = ({ product }) => {
     return (
-        <MDBCard className="mx-auto" style={{ width: '13rem'}}>
+        <MDBCard className="mx-auto my-2" style={{ width: '100%'}}>
             <a href={`/products/${product._id}`}>
-                <MDBCardImage src={product.image} alt='...' position='top' style={{width: '100%'}} />
+                <MDBCardImage src={product.image} alt='...' position='top' style={{ width: '100%'}}/>
             </a>
             <MDBCardBody>
                 <MDBCardTitle>{product.name}</MDBCardTitle>

@@ -25,13 +25,13 @@ const GearScreen = () => {
                     <MDBCol>
                         <MDBBreadcrumb className="pt-1">
                             <MDBBreadcrumbItem>
-                                <a href='#'>Element 1</a>
+                                <p>Element 1</p>
                             </MDBBreadcrumbItem>
                             <MDBBreadcrumbItem>
-                                <a href='#'>Element 2</a>
+                                <p>Element 2</p>
                             </MDBBreadcrumbItem>
                             <MDBBreadcrumbItem>
-                                <a href='#'>Element 3</a>
+                                <p>Element 3</p>
                             </MDBBreadcrumbItem>
                         </MDBBreadcrumb>
                     </MDBCol>
@@ -42,7 +42,7 @@ const GearScreen = () => {
                     <MDBCol  xs="12" sm="12" md="9" lg="9" xl="9">
                     <MDBRow >
                     {products.map(product => (
-                        <MDBCol sm={12} md={12} lg={4} xl={3}>
+                        <MDBCol key={product._id} sm={12} md={12} lg={4} xl={3}>
                         <Product product={product} style={{ width: '100%'}}/>
                         </MDBCol>
                     ))}
@@ -57,7 +57,7 @@ const GearScreen = () => {
                             <input type='search' className='form-control' placeholder='Type query' aria-label='Search'/>
                             <MDBBtn color='outline-success'>Chercher</MDBBtn>
                         </form>
-                        <NavBar/> 
+                        <NavBar/>
                     </MDBCol>
 
                 </MDBRow>
