@@ -15,7 +15,7 @@ const Contact = () => {
                 </MDBCol>
                 <MDBCol className="mx-auto" sm="12" md="12" lg="6">
                     <MDBCol sm="12" md="12" lg="12">
-                        <img className="text-center"  style={{width: '100%'}} src="../../images/Light Multi service.png" alt="" />
+                        <img className="text-center"  style={{width: '100%'}} src="../../images/LMS.png" alt="" />
                     </MDBCol>
                     <MDBCol sm="12" md="12" lg="12">
                         
