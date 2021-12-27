@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Carousel, Button } from 'react-bootstrap';
 import Clients from '../components/Clients';
 import Products from '../components/Products';
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { listProducts } from '../actions/productActions';
 
 
 
 
 const HomeScreen = () => {
-    const [products, setProducts] = useState([])
+    const dispatch = useDispatch()
 
+    const productList = useSelector(state => state.productList)
+    const { loading, error, products } = productList
+    
     useEffect(() => {
-        const fetchProducts = async () => {
-            const { data } = await axios.get('/api/products')
+        dispatch(listProducts())
+    }, [dispatch])
 
-            setProducts(data)
-        }
-        fetchProducts()
-    }, [])
-
+    
     const [clients, setClients] = useState([])
 
     useEffect(() => {
@@ -30,6 +33,7 @@ const HomeScreen = () => {
         fetchClients()
     }, [])
 
+    
     return (
         < div className=' px-0' >
             <Row variant="bg-dark">
@@ -116,13 +120,15 @@ const HomeScreen = () => {
                 </div>
             </Row>
 
-            <Row >
+            {loading ? ( <Loader /> ) : error ? ( <Message variant='danger'>{error}</Message>) : (
+                <Row >
                 {products.map(product => (
                         <Col key={product._id} sm={12} md={12} lg={3} xl={3}>
                         <Products product={product} style={{ width: '100%'}}/>
                         </Col>
                     ))}
             </Row>
+            )}
 
             <div className="text-center py-4">
                 <Button variant="success">
