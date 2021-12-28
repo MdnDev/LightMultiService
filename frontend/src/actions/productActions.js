@@ -29,9 +29,9 @@ export const listProducts = () => async (dispatch) => {
 
 export const listProductDetails = (id) => async (dispatch) => {
     try {
-        dispatch({ type: PRODUCT_DETAILS_REQUEST})
+        dispatch({ type: PRODUCT_DETAILS_REQUEST,})
 
-        const { data } = axios.get(`/api/photos/${id}`)
+        const { data } = await axios.get(`/api/products/${id}`)
 
         dispatch({ type:
         PRODUCT_DETAILS_SUCCESS,

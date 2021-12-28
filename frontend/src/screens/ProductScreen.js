@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'
 import Description from '../components/Description';
+import { listProductDetails } from '../actions/productActions';
 import { useParams } from 'react-router-dom';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+
+
 
 
 
@@ -11,18 +16,15 @@ import { useParams } from 'react-router-dom';
 
 
 const ProductScreen = () => {
-    const [product, setProduct] = useState({})
-
+    const dispatch = useDispatch()
     const params = useParams()
+    
+    const productDetails = useSelector((state) => state.productDetails)
+    const { loading, error, product } = productDetails
 
-    useEffect(() => {
-        const fetchProduct = async () => {
-            const { data } = await axios.get(`/api/products/${params.id}`)
-
-            setProduct(data)
-        }
-        fetchProduct()
-    }, [params])
+   useEffect(() => {
+       dispatch(listProductDetails(params.id))
+   }, [dispatch, params])
 
     return (
         <Container className="py-5">
@@ -33,8 +35,12 @@ const ProductScreen = () => {
                         <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
                         <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
                     </MDBBreadcrumb>
-                    <Image src={product.image} alt={product.name} fluid/>
-                </Col>
+                    {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
+                        <Image src={product.image} alt={product.name} fluid/>   
+                    )}
+                 </Col>
+                
+
                 <Col xs="12" sm="12" md="12" lg="6" xl="6">
                     <h3 className="mb-3">{product.name}</h3>
                     <Description />
