@@ -7,6 +7,8 @@ import GearScreen from './screens/GearScreen';
 import AboutScreen from './screens/AboutScreen';
 import ContactScreen from './screens/ContactScreen';
 import ProductScreen from './screens/ProductScreen';
+import ProductListScreen from './screens/ProductListScreen';
+import LoginScreen from './screens/LoginScreen';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/products/:id" element={<ProductScreen/>}/>
             <Route path="/about" element={<AboutScreen/>}/>
             <Route path="/contact" element={<ContactScreen/>}/>
+            <Route path="/productList" element={<ProductListScreen/>}/>
+            <Route path="/login" element={<LoginScreen/>}/>
           </Routes>
         </Container>
       </main>
