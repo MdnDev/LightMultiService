@@ -35,7 +35,7 @@ export const userLoginReducer = (state = { }, action) => {
             default:
                 return state
     }
-}
+};
 
 export const userDetailsReducer = (state = { user: {}}, action) => {
     switch (action.type) {

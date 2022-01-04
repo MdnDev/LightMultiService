@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'

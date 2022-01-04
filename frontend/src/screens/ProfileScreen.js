@@ -1,14 +1,15 @@
-import React from 'react';
-import { Table, Form, Button, Row, Col } from 'react-bootstrap';
+import React from 'react'
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 
-const profileScreen = () => {
+const ProfileScreen = () => {
     return (
         <div>
-            
+           This is the profile screen. 
         </div>
     )
 }
 
-export default profileScreen
+export default ProfileScreen
+
+
