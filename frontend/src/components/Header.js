@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Container} from 'react-bootstrap';
+import { Navbar, Container, Nav} from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
 import { MDBNavbarBrand } from 'mdb-react-ui-kit';
 import { useDispatch, useSelector } from 'react-redux'
@@ -40,11 +40,16 @@ const Header = () => {
                 <NavLink className="Nav_link" to="/about">A Propos</NavLink>
                 <NavLink className="Nav_link" to="/contact">Contact</NavLink>
                 { !userInfo ? (
-                    <NavLink className="Nav_link" to="/profile">Se connecter</NavLink>
+                    <NavLink className="Nav_link" to="/login">Se connecter</NavLink>
                 ) : (
-                    <NavDropdown title={userInfo.name} id='username'>
-                    <NavLink className="Nav_link" to="/login">Mon profil</NavLink>
-                    </NavDropdown>
+                        <NavDropdown title={userInfo.name} id='username'>
+                            <Nav.Link className="Nav_link" style={{ display: "block"}}>
+                                <NavDropdown.Item>Profil</NavDropdown.Item>
+                            </Nav.Link>
+                            <Nav.Link className="Nav_link" style={{ display: "block"}}>
+                                <NavDropdown.Item onClick={logoutHandler}>Déconnexion</NavDropdown.Item>
+                            </Nav.Link>
+                        </NavDropdown>
                 )}
                 
             </Navbar.Collapse>
