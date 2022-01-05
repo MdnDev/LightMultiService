@@ -1,7 +1,20 @@
 import React from 'react'
 import { MDBFooter, MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+import { Navbar, Container, Nav} from 'react-bootstrap';
+import { Link, NavLink } from "react-router-dom";
+import { MDBNavbarBrand } from 'mdb-react-ui-kit';
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/userActions'
+import { NavDropdown } from 'react-bootstrap'
 
 const Footer = () => {
+    const dispatch = useDispatch()
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
     return (
         <MDBFooter style={{backgroundColor: '#94F29F'}} className='text-center text-lg-left'>
         <MDBContainer className='p-4'>
@@ -69,6 +82,7 @@ const Footer = () => {
                 </li>
               </ul>
             </MDBCol>
+            
           </MDBRow>
         </MDBContainer>
   
@@ -77,6 +91,23 @@ const Footer = () => {
           <a className='text-dark' href='https://lightmultiservice.com/'>
             lightmultiservice.com
           </a>
+          { !userInfo ? (
+                    <NavLink className="Nav_link" to="/login">
+                        <i className='fas fa-lock'></i>
+                    </NavLink>
+                ) : (
+                        <NavDropdown title={userInfo.name} id='username'>
+                            <Nav.Link className="Nav_link" to="/profile" style={{ display: "block"}}>
+                                <NavDropdown.Item>Profil</NavDropdown.Item>
+                            </Nav.Link>
+                            <Nav.Link className="Nav_link" to="/admin/productlist" style={{ display: "block"}}>
+                                <NavDropdown.Item>Articles</NavDropdown.Item>
+                            </Nav.Link>
+                            <Nav.Link className="Nav_link" style={{ display: "block"}}>
+                                <NavDropdown.Item onClick={logoutHandler}>Déconnexion</NavDropdown.Item>
+                            </Nav.Link>
+                        </NavDropdown>
+                )}
         </div>
       </MDBFooter>
 

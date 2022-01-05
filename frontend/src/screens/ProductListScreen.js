@@ -63,7 +63,7 @@ const ProductListScreen = () => {
     ])
   
     const deleteHandler = (id) => {
-      if (window.confirm('Are you sure')) {
+      if (window.confirm('Supprimer ?')) {
         dispatch(deleteProduct(id))
       }
     }
@@ -99,8 +99,8 @@ const ProductListScreen = () => {
                 <tr>
                   <th>ID</th>
                   <th>NOM</th>
-                  <th>CATEGORY</th>
-                  <th>BRAND</th>
+                  <th>CATEGORIE</th>
+                  <th>MARQUE</th>
                   <th></th>
                 </tr>
               </thead>

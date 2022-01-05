@@ -22,7 +22,7 @@ function App() {
             <Route path="/products/:id" element={<ProductScreen/>}/>
             <Route path="/about" element={<AboutScreen/>}/>
             <Route path="/contact" element={<ContactScreen/>}/>
-            <Route path="/productList" element={<ProductListScreen/>}/>
+            <Route path="/admin/productlist" element={<ProductListScreen/>}/>
             <Route path="/login" element={<LoginScreen/>}/>
           </Routes>
         </Container>

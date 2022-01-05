@@ -34,7 +34,7 @@ const LoginScreen = ({ location }) => {
 
   return (
     <FormContainer>
-    <h1>Se connecter</h1>
+    <h1>Espace Administrateur</h1>
     {error && <Message variant='danger'>L'adresse e-mail et/ou le mot de passe sont incorrectes.</Message>}
     {loading && <Loader></Loader>}
     <Form onSubmit={submitHandler}>

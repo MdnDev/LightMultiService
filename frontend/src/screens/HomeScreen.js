@@ -14,7 +14,7 @@ import { listProducts } from '../actions/productActions';
 const HomeScreen = () => {
     const dispatch = useDispatch()
 
-    const productList = useSelector(state => state.productList)
+    const productList = useSelector((state) => state.productList)
     const { loading, error, products } = productList
     
     useEffect(() => {
@@ -124,7 +124,7 @@ const HomeScreen = () => {
                 <Row >
                 {products.map(product => (
                         <Col key={product._id} sm={12} md={12} lg={3} xl={3}>
-                        <Products product={product} style={{ width: '100%'}}/>
+                            <Products product={product} style={{ width: '100%'}}/>
                         </Col>
                     ))}
             </Row>
@@ -145,9 +145,9 @@ const HomeScreen = () => {
             </Row>
 
             <Row>
-                {clients.map(client => (
+            {clients.map(client => (
                         <Col key={client._id} sm={12} md={12} lg={3} xl={3}>
-                        <Clients client={client} style={{ width: '100%'}}/>
+                            <Clients client={client} style={{ width: '100%'}}/>
                         </Col>
                     ))}
                 
