@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userActions'
 import { NavDropdown } from 'react-bootstrap'
 
+
 const Footer = () => {
     const dispatch = useDispatch()
     const userLogin = useSelector((state) => state.userLogin)
@@ -97,17 +98,21 @@ const Footer = () => {
                     </NavLink>
                 ) : (
                         <NavDropdown title={userInfo.name} id='username'>
-                            <Nav.Link className="Nav_link" to="/profile" style={{ display: "block"}}>
+                            <Link className="Nav_link" to="/profile" style={{ display: "block"}}>
                                 <NavDropdown.Item>Profil</NavDropdown.Item>
-                            </Nav.Link>
-                            <Nav.Link className="Nav_link" to="/admin/productlist" style={{ display: "block"}}>
-                                <NavDropdown.Item>Articles</NavDropdown.Item>
-                            </Nav.Link>
+                            </Link>
+                            <Nav.Item>
+                              <Link className="Nav_link" to="/admin/productlist" style={{ display: "block"}}>
+                                  <>Articles</>
+                              </Link>
+                            </Nav.Item>
+                            
                             <Nav.Link className="Nav_link" style={{ display: "block"}}>
                                 <NavDropdown.Item onClick={logoutHandler}>Déconnexion</NavDropdown.Item>
                             </Nav.Link>
                         </NavDropdown>
                 )}
+          
         </div>
       </MDBFooter>
 

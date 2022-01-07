@@ -3,6 +3,7 @@ import axios from 'axios'
 import { MDBRow, MDBCol, MDBContainer, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import NavBar from '../components/NavBar';
 import Product from '../components/Product';
+import Footer from '../components/Footer';
 
 const GearScreen = () => {
     const [products, setProducts] = useState([])
@@ -17,7 +18,7 @@ const GearScreen = () => {
     }, [])
 
     return (
-        <div >
+        < >
             <h1 className="py-3">Famille d'article</h1>
             <MDBContainer>
                 
@@ -63,8 +64,10 @@ const GearScreen = () => {
                 </MDBRow>
                         
             </MDBContainer>
-
-        </div>
+            
+            
+        </>
+        
     )
 }
 
