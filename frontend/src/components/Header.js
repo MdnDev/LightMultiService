@@ -39,6 +39,22 @@ const Header = () => {
                 </MDBNavbarBrand>
                 <NavLink className="Nav_link" to="/about">A Propos</NavLink>
                 <NavLink className="Nav_link" to="/contact">Contact</NavLink>
+                {userInfo ? (
+                        <NavDropdown title={userInfo.name} id='username'>
+                            <Link className="Nav_link" to="/profile" style={{ display: "block"}}>
+                                <div>Profil</div>
+                            </Link>
+                            <Nav.Item>
+                              <Link className="Nav_link" to="/admin/productlist" style={{ display: "block"}}>
+                                  <div>Articles</div>
+                              </Link>
+                            </Nav.Item>
+                            
+                            <Nav.Link className="Nav_link" style={{ display: "block"}}>
+                                <div onClick={logoutHandler}>Déconnexion</div>
+                            </Nav.Link>
+                        </NavDropdown>
+                ) : <></>}
                 
                 
             </Navbar.Collapse>

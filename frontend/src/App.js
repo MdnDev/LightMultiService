@@ -24,7 +24,7 @@ function App() {
             <Route path="/about" element={<AboutScreen/>}/>
             <Route path="/contact" element={<ContactScreen/>}/>
             <Route path="/admin/productlist" element={<ProductListScreen/>}/>
-            <Route path="/admin/productedit" element={<ProductEditScreen/>}/>
+            <Route path="/admin/product/:id/edit" element={<ProductEditScreen/>}/>
             <Route path="/login" element={<LoginScreen/>}/>
           </Routes>
         </Container>

@@ -15,7 +15,6 @@ import {
     PRODUCT_UPDATE_REQUEST,
     PRODUCT_UPDATE_SUCCESS,
     PRODUCT_UPDATE_FAIL,
-    PRODUCT_UPDATE_RESET,
     
 } from '../constants/productConstants'
 import { logout } from './userActions'
@@ -67,7 +66,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
         } = getState()
 
         const config = {
-            hedaers: {
+            headers: {
                 Authorization:`Bearer ${userInfo.token}`,
             },
         }

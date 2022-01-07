@@ -1,8 +1,7 @@
 import React from 'react'
 import { MDBFooter, MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import { Navbar, Container, Nav} from 'react-bootstrap';
+import { Nav} from 'react-bootstrap';
 import { Link, NavLink } from "react-router-dom";
-import { MDBNavbarBrand } from 'mdb-react-ui-kit';
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userActions'
 import { NavDropdown } from 'react-bootstrap'

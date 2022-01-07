@@ -29,6 +29,7 @@ const ProductEditScreen = () => {
 
     const productDetails = useSelector((state) => state.productDetails)
     const { loading, error, product } = productDetails
+    
 
     const productUpdate = useSelector((state) => state.productUpdate)
     const {
@@ -118,18 +119,7 @@ const ProductEditScreen = () => {
                     </Form.Group>
 
 
-                    <Form.Group controlId='image'>
-                    <Form.Label>Image</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter image url'
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
-                    ></Form.Control>
-                   
                     
-                    {uploading && <Loader />}
-                    </Form.Group>
 
                     <Form.Group controlId='brand'>
                     <Form.Label>Brand</Form.Label>

@@ -3,6 +3,7 @@ import { authUser, getUserProfile, updateUserProfile, getUsers, deleteUser, getU
 const router = express.Router()
 import { protect, admin } from '../middleware/authMiddleware.js'
 
+router.route('/').get(protect, admin, getUsers)
 router.post('/login', authUser)
 router.route('/profile')
       .get(protect, getUserProfile)
