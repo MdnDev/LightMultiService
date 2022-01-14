@@ -24,21 +24,21 @@ const Header = () => {
         <Navbar expand="lg" collapseOnSelect
         style={{backgroundColor: '#94F29F'}}>
         <Container >
-            <div className="mx-auto" >
+            <div style={{border:"1px solid red"}} className="mx-auto" >
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse  id="basic-navbar-nav">
-                <NavLink className="Nav_link" to="/">Acceuil</NavLink>
-                <NavLink className="Nav_link" to="/gear">Catalogue</NavLink>
+                <NavLink className="Nav_link" to="/"><h4>Acceuil</h4></NavLink>
+                <NavLink className="Nav_link" to="/gear"><h4>Catalogue</h4></NavLink>
                 <MDBNavbarBrand href='#'>
                     <img
                     src='../../images/LMS.png'
-                    height='75px'
+                    height='120px'
                     alt=''
                     loading='lazy'
                     />
                 </MDBNavbarBrand>
-                <NavLink className="Nav_link" to="/about">A Propos</NavLink>
-                <NavLink className="Nav_link" to="/contact">Contact</NavLink>
+                <NavLink className="Nav_link" to="/about"><h4>A Propos</h4></NavLink>
+                <NavLink className="Nav_link" to="/contact"><h4>Contact</h4></NavLink>
                 {userInfo ? (
                         <NavDropdown title={userInfo.name} id='username'>
                             <Link className="Nav_link" to="/profile" style={{ display: "block"}}>

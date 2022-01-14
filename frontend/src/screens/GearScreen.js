@@ -3,6 +3,7 @@ import axios from 'axios'
 import { MDBRow, MDBCol, MDBContainer, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import NavBar from '../components/NavBar';
 import Product from '../components/Product';
+import Footer from '../components/Footer';
 
 
 const GearScreen = () => {
@@ -65,9 +66,7 @@ const GearScreen = () => {
                         
             </MDBContainer>
             
-            
         </>
-        
     )
 }
 

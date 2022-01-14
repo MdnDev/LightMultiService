@@ -28,8 +28,8 @@ const ProductScreen = () => {
 
     return (
         <Container className="py-5">
-            <Row >
-                <Col xs="12" sm="12" md="12" lg="6" xl="6">
+            <Row style={{border: "1px solid blue"}} >
+                <Col style={{border: "1px solid blue"}} xs="12" sm="12" md="12" lg="6" xl="6">
                     <MDBBreadcrumb className="mx-auto">
                         <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
                         <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
@@ -38,10 +38,20 @@ const ProductScreen = () => {
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                         <Image src={product.image} alt={product.name} fluid/>   
                     )}
+                    <Row style={{border: "1px solid blue"}}>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                    </Row>
                  </Col>
                 
 
-                <Col xs="12" sm="12" md="12" lg="6" xl="6">
+                <Col style={{border: "1px solid blue"}} xs="12" sm="12" md="12" lg="6" xl="6">
                     <h3 className="mb-3">{product.name}</h3>
                     <Description />
                     <div className="d-flex my-5">

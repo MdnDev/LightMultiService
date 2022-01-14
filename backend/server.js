@@ -7,6 +7,7 @@ import products from './data/products.js'
 import clients from './data/clients.js'
 import categories from './data/categories.js';
 import productRoutes from './routes/productRoutes.js'
+import accessoryRoutes from './routes/accessoryRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
@@ -29,6 +30,7 @@ app.get('/api/clients', (req, res) => {
 })
 
 app.use('/api/products', productRoutes)
+app.use('/api/accessories', accessoryRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/upload', uploadRoutes)
