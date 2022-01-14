@@ -46,7 +46,7 @@ const deleteAccessory = asyncHandler(async (req, res) => {
   const createAccessory = asyncHandler(async (req, res) => {
     const accessory = new Accessory({
       name: 'Nom Prototype',
-      accessory: req.accessory._id,
+      user: req.user._id,
       image: '/images/prototype.jpg',
       brand: ' marque prototype',
       category: 'catégorie prototype',

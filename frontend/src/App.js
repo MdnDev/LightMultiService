@@ -9,6 +9,8 @@ import ContactScreen from './screens/ContactScreen';
 import ProductScreen from './screens/ProductScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
+import AccessoryListScreen from './screens/AccessoryListScreen';
+import AccessoryEditScreen from './screens/AccessoryEditScreen';
 import LoginScreen from './screens/LoginScreen';
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
             <Route path="/contact" element={<ContactScreen/>}/>
             <Route path="/admin/productlist" element={<ProductListScreen/>}/>
             <Route path="/admin/product/:id/edit" element={<ProductEditScreen/>}/>
+            <Route path="/admin/accessorylist" element={<AccessoryListScreen/>}/>
+            <Route path="/admin/accessory/:id/edit" element={<AccessoryEditScreen/>}/>
             <Route path="/login" element={<LoginScreen/>}/>
           </Routes>
         </Container>

@@ -7,15 +7,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
-import { listProductDetails, updateProduct } from '../actions/productActions'
-import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import { listAccessoryDetails, updateAccessory } from '../actions/accessoryActions'
+import { ACCESSORY_UPDATE_RESET } from '../constants/accessoryConstants'
 
-const ProductEditScreen = () => {
+const AccessoryEditScreen = () => {
     const navigate = useNavigate()
     const params = useParams()
     
 
-    const productId = params.id
+    const accessoryId = params.id
 
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
@@ -27,33 +27,33 @@ const ProductEditScreen = () => {
     const dispatch = useDispatch()
 
 
-    const productDetails = useSelector((state) => state.productDetails)
-    const { loading, error, product } = productDetails
+    const accessoryDetails = useSelector((state) => state.accessoryDetails)
+    const { loading, error, accessory } = accessoryDetails
     
 
-    const productUpdate = useSelector((state) => state.productUpdate)
+    const accessoryUpdate = useSelector((state) => state.accessoryUpdate)
     const {
     loading: loadingUpdate,
     error: errorUpdate,
     success: successUpdate,
-    } = productUpdate
+    } = accessoryUpdate
 
     useEffect(() => {
         if (successUpdate) {
-          dispatch({ type: PRODUCT_UPDATE_RESET })
-          navigate('/admin/productlist')
+          dispatch({ type: ACCESSORY_UPDATE_RESET })
+          navigate('/admin/accessorylist')
         } else {
-          if (!product.name || product._id !== productId) {
-            dispatch(listProductDetails(productId))
+          if (!accessory.name || accessory._id !== accessoryId) {
+            dispatch(listAccessoryDetails(accessoryId))
           } else {
-            setName(product.name)
-            setImage(product.image)
-            setBrand(product.brand)
-            setCategory(product.category)
-            setDescription(product.description)
+            setName(accessory.name)
+            setImage(accessory.image)
+            setBrand(accessory.brand)
+            setCategory(accessory.category)
+            setDescription(accessory.description)
           }
         }
-      }, [dispatch, navigate, product, productId, successUpdate])
+      }, [dispatch, navigate, accessory, accessoryId, successUpdate])
 
 
       const uploadFileHandler = async (e) => {
@@ -82,8 +82,8 @@ const ProductEditScreen = () => {
       const submitHandler = (e) => {
         e.preventDefault()
         dispatch(
-          updateProduct({
-            _id: productId,
+          updateAccessory({
+            _id: accessoryId,
             name,
             image,
             brand,
@@ -95,11 +95,11 @@ const ProductEditScreen = () => {
 
     return (
         <div>
-            <Link to='/admin/productlist' className='btn btn-light my-3'>
-                RETOUR
+            <Link to='/admin/accessorylist' className='btn btn-light my-3'>
+                Retour
             </Link>
             <FormContainer>
-                <h1>Ajouter/Modifier les produits</h1>
+                <h1>Ajouter/Modifier les Accessoires</h1>
                 {loadingUpdate && <Loader />}
                 {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
                 {loading ? (
@@ -125,7 +125,7 @@ const ProductEditScreen = () => {
                     <Form.Label>Marque</Form.Label>
                     <Form.Control
                         type='text'
-                        placeholder='Enter la marque'
+                        placeholder='Enter brand'
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}
                     ></Form.Control>
@@ -133,7 +133,7 @@ const ProductEditScreen = () => {
 
 
                     <Form.Group controlId='category'>
-                    <Form.Label>Categories</Form.Label>
+                    <Form.Label>Categorie</Form.Label>
                     <Form.Control
                         type='text'
                         placeholder='Enter category'
@@ -162,6 +162,4 @@ const ProductEditScreen = () => {
     )
 }
 
-export default ProductEditScreen
-
-
+export default AccessoryEditScreen

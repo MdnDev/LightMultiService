@@ -34,11 +34,7 @@ const productSchema = mongoose.Schema({
             default: 0
         },
 
-        accesory: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Accessory'
-        }
+        
     },
     {
         timestamps: true,

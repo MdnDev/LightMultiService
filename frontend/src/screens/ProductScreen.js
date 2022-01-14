@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'
@@ -7,6 +8,7 @@ import { listProductDetails } from '../actions/productActions';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import Accessory from '../components/Accessory';
 
 
 
@@ -26,6 +28,17 @@ const ProductScreen = () => {
        dispatch(listProductDetails(params.id))
    }, [dispatch, params])
 
+   const [accessories, setAccessories] = useState([])
+
+    useEffect(() => {
+        const fetchAccessories = async () => {
+            const { data } = await axios.get('/api/accessories')
+
+            setAccessories(data)
+        }
+        fetchAccessories()
+    }, [])
+
     return (
         <Container className="py-5">
             <Row style={{border: "1px solid blue"}} >
@@ -39,14 +52,11 @@ const ProductScreen = () => {
                         <Image src={product.image} alt={product.name} fluid/>   
                     )}
                     <Row style={{border: "1px solid blue"}}>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
-                        <Col xs="12" sm="12" md="2" lg="2" xl="2">1</Col>
+                    {accessories.map(accessory => (
+                        <Col key={accessory._id} sm={12} md={12} lg={4} xl={3}>
+                        <Accessory accessory={accessory} style={{ width: '100%'}}/>
+                        </Col>
+                    ))}
                     </Row>
                  </Col>
                 
