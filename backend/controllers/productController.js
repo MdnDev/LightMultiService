@@ -51,6 +51,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
       brand: ' marque prototype',
       category: 'catégorie prototype',
       description: ' description prototype',
+      accessories: 'accessoires prototype'
     })
   
     const createdProduct = await product.save()

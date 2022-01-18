@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -22,6 +22,7 @@ const ProductEditScreen = () => {
     const [brand, setBrand] = useState('')
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
+    const [accessory, setAccessory] = useState('')
     const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -51,6 +52,7 @@ const ProductEditScreen = () => {
             setBrand(product.brand)
             setCategory(product.category)
             setDescription(product.description)
+            setAccessory(product.accessory)
           }
         }
       }, [dispatch, navigate, product, productId, successUpdate])
@@ -89,47 +91,45 @@ const ProductEditScreen = () => {
             brand,
             category,
             description,
+            accessory,
           })
         )
       }
 
     return (
         <div>
-            <Link to='/admin/productlist' className='btn btn-light my-3'>
+          <Link to='/admin/productlist' className='btn btn-light my-3'>
                 RETOUR
-            </Link>
-            <FormContainer>
-                <h1>Ajouter/Modifier les produits</h1>
-                {loadingUpdate && <Loader />}
-                {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
-                {loading ? (
-                <Loader />
-                ) : error ? (
-                <Message variant='danger'>{error}</Message>
-                ) : (
-                <Form onSubmit={submitHandler}>
-                    <Form.Group controlId='name'>
-                    <Form.Label>Nom</Form.Label>
-                    <Form.Control
-                        type='name'
-                        placeholder='Enter name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+          </Link>
+          <FormContainer>
+            <h1>Ajouter/Modifier les produits</h1>
+              {loadingUpdate && <Loader />}
+              {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
+              {loading ? (
+              <Loader />
+              ) : error ? (
+              <Message variant='danger'>{error}</Message>
+              ) : (
+              <Form onSubmit={submitHandler}>
+                <Form.Group controlId='name'>
+                  <Form.Label>Nom</Form.Label>
+                  <Form.Control
+                    type='name'
+                    placeholder='Enter name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     ></Form.Control>
-                    </Form.Group>
+                </Form.Group>
 
-
-                    
-
-                    <Form.Group controlId='brand'>
+                  <Form.Group controlId='brand'>
                     <Form.Label>Marque</Form.Label>
                     <Form.Control
-                        type='text'
-                        placeholder='Enter la marque'
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
+                      type='text'
+                      placeholder='Enter la marque'
+                      value={brand}
+                      onChange={(e) => setBrand(e.target.value)}
                     ></Form.Control>
-                    </Form.Group>
+                  </Form.Group>
 
 
                     <Form.Group controlId='category'>
@@ -142,7 +142,7 @@ const ProductEditScreen = () => {
                     ></Form.Control>
                     </Form.Group>
 
-                    <Form.Group controlId='description'>
+                    <Form.Group className="pb-3" controlId='description'>
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                         type='text'
@@ -152,7 +152,47 @@ const ProductEditScreen = () => {
                     ></Form.Control>
                     </Form.Group>
 
-                    <Button type='submit' variant='primary'>
+                    {/*ACCESSORIES FORMGROUP*/}
+                    <h4 className="py-2">Accesoires</h4>
+                        <Form.Group controlId='Accessories'>
+                          <Form.Label>Nom</Form.Label>
+                          <Form.Control
+                              type='name'
+                              placeholder='Enter name'
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                          ></Form.Control>
+
+                          <Form.Label>Marque</Form.Label>
+                          <Form.Control
+                              type='text'
+                              placeholder='Enter la marque'
+                              value={brand}
+                              onChange={(e) => setBrand(e.target.value)}
+                          ></Form.Control>
+
+
+                          <Form.Label>Categories</Form.Label>
+                          <Form.Control
+                              type='text'
+                              placeholder='Enter category'
+                              value={category}
+                              onChange={(e) => setCategory(e.target.value)}
+                          ></Form.Control>
+
+                          <Form.Label>Description</Form.Label>
+                          <Form.Control
+                              type='text'
+                              placeholder='Enter description'
+                              value={description}
+                              onChange={(e) => setDescription(e.target.value)}
+                          ></Form.Control>
+                        </Form.Group>
+
+                        
+                  {/*END OF ACCESSORIES FORMGROUP*/}
+
+                    <Button className="my-5" type='submit' variant='primary'>
                     Valider
                     </Button>
                 </Form>

@@ -1,6 +1,8 @@
 import asyncHandler from 'express-async-handler'
 import Accessory from '../models/accessoryModel.js'
 
+
+
 // @description    Fetch all accessories
 // @route          GET /api/accessory
 // @access         Public
@@ -44,17 +46,21 @@ const deleteAccessory = asyncHandler(async (req, res) => {
   // @route   POST /api/accessories
   // @access  Private/Admin
   const createAccessory = asyncHandler(async (req, res) => {
+   
     const accessory = new Accessory({
-      name: 'Nom Prototype',
+      name: 'Accessoire Prototype',
       user: req.user._id,
-      image: '/images/prototype.jpg',
-      brand: ' marque prototype',
-      category: 'catégorie prototype',
-      description: ' description prototype',
-    })
-  
+      product: req.product._id,
+      image: '/images/accessoireprototype.jpg',
+      brand: ' accessoire marque prototype',
+      category: 'catégorie accessoire prototype',
+      description: ' description accessoire prototype',
+      })
+      
+    
     const createdAccessory = await accessory.save()
     res.status(201).json(createdAccessory)
+
   })
   
   // @desc    Update a accessory
@@ -86,6 +92,20 @@ const deleteAccessory = asyncHandler(async (req, res) => {
       throw new Error('Accessory not found')
     }
   })
+
+  // @desc    Find an accessory related to a product
+  // @route   GET
+  // @access  Public
+
+  //Accessory.
+  //findOne({ name: 'prototype' }).
+  //populate('product').
+  //exec(function (err, accessory) {
+    //if (err) return handleError(err);
+    //console.log('Cet accessoire est lié à', accessory.product.name);
+    // prints "The author is Ian Fleming"
+  //});
+
 
 export {
     getAccessories,
