@@ -2,7 +2,8 @@ import React, {useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
+import { MDBFile, MDBFileInput } from 'mdb-react-ui-kit'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -16,6 +17,7 @@ const ProductEditScreen = () => {
     
 
     const productId = params.id
+    
 
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
@@ -30,6 +32,7 @@ const ProductEditScreen = () => {
 
     const productDetails = useSelector((state) => state.productDetails)
     const { loading, error, product } = productDetails
+
     
 
     const productUpdate = useSelector((state) => state.productUpdate)
@@ -38,6 +41,7 @@ const ProductEditScreen = () => {
     error: errorUpdate,
     success: successUpdate,
     } = productUpdate
+
 
     useEffect(() => {
         if (successUpdate) {
@@ -57,7 +61,7 @@ const ProductEditScreen = () => {
         }
       }, [dispatch, navigate, product, productId, successUpdate])
 
-
+     
       const uploadFileHandler = async (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
@@ -97,108 +101,107 @@ const ProductEditScreen = () => {
       }
 
     return (
-        <div>
+        <>
           <Link to='/admin/productlist' className='btn btn-light my-3'>
                 RETOUR
-          </Link>
-          <FormContainer>
-            <h1>Ajouter/Modifier les produits</h1>
-              {loadingUpdate && <Loader />}
-              {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
-              {loading ? (
-              <Loader />
-              ) : error ? (
-              <Message variant='danger'>{error}</Message>
-              ) : (
-              <Form onSubmit={submitHandler}>
-                <Form.Group controlId='name'>
-                  <Form.Label>Nom</Form.Label>
-                  <Form.Control
-                    type='name'
-                    placeholder='Enter name'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    ></Form.Control>
-                </Form.Group>
-
-                  <Form.Group controlId='brand'>
-                    <Form.Label>Marque</Form.Label>
-                    <Form.Control
-                      type='text'
-                      placeholder='Enter la marque'
-                      value={brand}
-                      onChange={(e) => setBrand(e.target.value)}
-                    ></Form.Control>
-                  </Form.Group>
-
-
-                    <Form.Group controlId='category'>
-                    <Form.Label>Categories</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter category'
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    ></Form.Control>
-                    </Form.Group>
-
-                    <Form.Group className="pb-3" controlId='description'>
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter description'
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></Form.Control>
-                    </Form.Group>
-
-                    {/*ACCESSORIES FORMGROUP*/}
-                    <h4 className="py-2">Accesoires</h4>
-                        <Form.Group controlId='Accessories'>
-                          <Form.Label>Nom</Form.Label>
-                          <Form.Control
-                              type='name'
-                              placeholder='Enter name'
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
-                          ></Form.Control>
-
-                          <Form.Label>Marque</Form.Label>
-                          <Form.Control
-                              type='text'
-                              placeholder='Enter la marque'
-                              value={brand}
-                              onChange={(e) => setBrand(e.target.value)}
-                          ></Form.Control>
-
-
-                          <Form.Label>Categories</Form.Label>
-                          <Form.Control
-                              type='text'
-                              placeholder='Enter category'
-                              value={category}
-                              onChange={(e) => setCategory(e.target.value)}
-                          ></Form.Control>
-
-                          <Form.Label>Description</Form.Label>
-                          <Form.Control
-                              type='text'
-                              placeholder='Enter description'
-                              value={description}
-                              onChange={(e) => setDescription(e.target.value)}
-                          ></Form.Control>
-                        </Form.Group>
-
+            </Link>
+            <FormContainer>
+            <h1 className='my-5'>Gérer les articles</h1>
+            {loadingUpdate && <Loader/>}
+            {errorUpdate && <Message>{errorUpdate}</Message>}
+            {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+                <div>
+                <form className="form" onSubmit={submitHandler}>
+                  <div>
+                    <h1>Edit Product {productId}</h1>
+                  </div>
+                  {loadingUpdate && <Loader></Loader>}
+                  {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+                  {loading ? (
+                    <Loader></Loader>
+                  ) : error ? (
+                    <Message variant="danger">{error}</Message>
+                  ) : (
+                    <>
+                      <div>
+                        <label htmlFor="name">Name</label>
+                        <input
+                          id="name"
+                          type="text"
+                          placeholder="Enter name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                        ></input>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="image">Image</label>
+                        <input
+                          id="image"
+                          type="text"
+                          placeholder="Enter image"
+                          value={image}
+                          onChange={(e) => setImage(e.target.value)}
+                        ></input>
+                      </div>
+                      <div>
+                        <label htmlFor="imageFile">Image File</label>
+                        <input
+                          type="file"
+                          id="imageFile"
+                          label="Choose Image"
+                          onChange={uploadFileHandler}
+                        ></input>
+                        {uploading && <Loader/>}
                         
-                  {/*END OF ACCESSORIES FORMGROUP*/}
-
-                    <Button className="my-5" type='submit' variant='primary'>
-                    Valider
-                    </Button>
-                </Form>
-                )}
-            </FormContainer>
-        </div>
+                      </div>
+                      <div>
+                        <label htmlFor="category">Category</label>
+                        <input
+                          id="category"
+                          type="text"
+                          placeholder="Enter category"
+                          value={category}
+                          onChange={(e) => setCategory(e.target.value)}
+                        ></input>
+                      </div>
+                      <div>
+                        <label htmlFor="brand">Brand</label>
+                        <input
+                          id="brand"
+                          type="text"
+                          placeholder="Enter brand"
+                          value={brand}
+                          onChange={(e) => setBrand(e.target.value)}
+                        ></input>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="description">Description</label>
+                        <textarea
+                          id="description"
+                          rows="3"
+                          type="text"
+                          placeholder="Enter description"
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                        ></textarea>
+                      </div>
+                      <div>
+                        <label></label>
+                        <button className="primary" type="submit">
+                          Update
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </form>
+              </div>
+            )}
+            
+            
+        </FormContainer>
+        </>
     )
 }
 

@@ -57,7 +57,6 @@ const deleteAccessory = asyncHandler(async (req, res) => {
       description: ' description accessoire prototype',
       })
       
-    
     const createdAccessory = await accessory.save()
     res.status(201).json(createdAccessory)
 

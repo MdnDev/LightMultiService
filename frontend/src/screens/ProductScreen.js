@@ -17,6 +17,7 @@ import Accessory from '../components/Accessory';
 
 
 
+
 const ProductScreen = () => {
     const dispatch = useDispatch()
     const params = useParams()
@@ -28,15 +29,15 @@ const ProductScreen = () => {
        dispatch(listProductDetails(params.id))
    }, [dispatch, params])
 
-   const [accessories, setAccessories] = useState([])
+   const [products, setProducts] = useState([])
 
     useEffect(() => {
-        const fetchAccessories = async () => {
-            const { data } = await axios.get('/api/accessories')
+        const fetchProducts = async () => {
+            const { data } = await axios.get('/api/products')
 
-            setAccessories(data)
+            setProducts(data)
         }
-        fetchAccessories()
+        fetchProducts()
     }, [])
 
     return (
@@ -52,7 +53,7 @@ const ProductScreen = () => {
                         <Image src={product.image} alt={product.name} fluid/>   
                     )}
                     <Row style={{border: "1px solid blue"}}>
-                    {accessories.map(accessory => (
+                    {products.map(accessory => (
                         <Col key={accessory._id} sm={12} md={12} lg={4} xl={3}>
                         <Accessory accessory={accessory} style={{ width: '100%'}}/>
                         </Col>
