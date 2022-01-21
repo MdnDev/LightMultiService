@@ -134,7 +134,7 @@ const ProductEditScreen = () => {
                         ></input>
                       </div>
                       
-                      <div>
+                      <div className='input-group'>
                         <label htmlFor="image">Image</label>
                         <input
                           id="image"
@@ -143,8 +143,6 @@ const ProductEditScreen = () => {
                           value={image}
                           onChange={(e) => setImage(e.target.value)}
                         ></input>
-                      </div>
-                      <div>
                         <label htmlFor="imageFile">Image File</label>
                         <input
                           type="file"
@@ -153,6 +151,9 @@ const ProductEditScreen = () => {
                           onChange={uploadFileHandler}
                         ></input>
                         {uploading && <Loader/>}
+                      </div>
+                      <div>
+                        
                         
                       </div>
                       <div>
