@@ -34,20 +34,20 @@ const productSchema = mongoose.Schema({
             default: 0
         },
 
-        accessories: [{
-            name: {
-                type: String,
-                required: true
-            },
+        accessoryName: {
+            type: String,
+            required: true
+        },
+     
+        accessoryImage: {
+            type: String,
+            required: true
+        }
         
-            image: {
-                type: String,
-                required: true,
-                
-            }
-        
-            
-        }]
+
+       
+       
+
 
         
     },
@@ -55,6 +55,8 @@ const productSchema = mongoose.Schema({
         timestamps: true,
     }
 )
+
+
 
 const Product = mongoose.model('Product', productSchema);
 

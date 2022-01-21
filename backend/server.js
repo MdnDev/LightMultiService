@@ -11,6 +11,7 @@ import accessoryRoutes from './routes/accessoryRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import uploadAccessoryRoutes from './routes/uploadAccessoryRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config()
@@ -34,9 +35,13 @@ app.use('/api/accessories', accessoryRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/upload', uploadRoutes)
+app.use('/api/uploadAccessories', uploadAccessoryRoutes)
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+const __dirname2 = path.resolve()
+app.use('/uploadsAccessories', express.static(path.join(__dirname2, '/uploadsAccessories')))
 
 
 app.use(notFound);

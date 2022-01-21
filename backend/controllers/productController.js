@@ -1,6 +1,5 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
-import Accessory from '../models/accessoryModel.js'
 
 // @description    Fetch all products
 // @route          GET /api/products
@@ -48,11 +47,11 @@ const deleteProduct = asyncHandler(async (req, res) => {
     const product = new Product({
       name: 'Sample name',
       user: req.user._id,
-      image: '/image/sample.jpg',
+      image: '/images/sample.jpg',
       category: 'Sample Category',
       description: 'Sample description',
-      
-      
+      accessoryName: 'Sample accessory name',
+      accessoryImage: '/images/sample.jpg'
     })
   
     const createdProduct = await product.save()
@@ -69,6 +68,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
       image,
       brand,
       category,
+      accessoryName,
+      accessoryImage
+     
+      
     } = req.body
   
     const product = await Product.findById(req.params.id)
@@ -79,6 +82,8 @@ const deleteProduct = asyncHandler(async (req, res) => {
       product.image = image
       product.brand = brand
       product.category = category
+      product.accessoryName = accessoryName
+      product.accessoryImage = accessoryImage
       
   
       const updatedProduct = await product.save()

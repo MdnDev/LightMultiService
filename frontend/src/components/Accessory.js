@@ -8,7 +8,7 @@ const Accessory = ({ accessory }) => {
                 <MDBCardImage src={accessory.image} alt='...' position='top' style={{ width: '100%'}}/>
             </a>
             <MDBCardBody>
-                <MDBCardTitle>{accessory.name}</MDBCardTitle>
+                <MDBCardTitle><h6>{accessory.name}</h6></MDBCardTitle>
                 </MDBCardBody>
                 
         </MDBCard>

@@ -8,7 +8,7 @@ import { listProductDetails } from '../actions/productActions';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import Accessory from '../components/Accessory';
+
 
 
 
@@ -50,15 +50,36 @@ const ProductScreen = () => {
                         <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
                     </MDBBreadcrumb>
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
-                        <Image src={product.image} alt={product.name} fluid/>   
+                        <div>
+                           <Image src={product.image} alt={product.name} fluid/>
+                        </div>
+
                     )}
+                    {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                     <Row style={{border: "1px solid blue"}}>
-                    {products.map(accessory => (
-                        <Col key={accessory._id} sm={12} md={12} lg={4} xl={3}>
-                        <Accessory accessory={accessory} style={{ width: '100%'}}/>
+                        <Col sm={12} md={12} lg={4} xl={3}>
+                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName}</h6>
                         </Col>
-                    ))}
+
+                        <Col sm={12} md={12} lg={4} xl={3}>
+                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName}</h6>
+                        </Col>
+
+                        <Col sm={12} md={12} lg={4} xl={3}>
+                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName}</h6>
+                        </Col>
+
+                        <Col sm={12} md={12} lg={4} xl={3}>
+                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName}</h6>
+                        </Col>
+
                     </Row>
+                    )}
+                    
                  </Col>
                 
 

@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
-import { MDBFile, MDBFileInput } from 'mdb-react-ui-kit'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -24,7 +23,8 @@ const ProductEditScreen = () => {
     const [brand, setBrand] = useState('')
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
-    const [accessory, setAccessory] = useState('')
+    const [accessoryName, setAccessoryName] = useState('')
+    const [accessoryImage, setAccessoryImage] = useState('')
     const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -56,7 +56,8 @@ const ProductEditScreen = () => {
             setBrand(product.brand)
             setCategory(product.category)
             setDescription(product.description)
-            setAccessory(product.accessory)
+            setAccessoryName(product.accessoryName)
+            setAccessoryImage(product.accessoryImage)
           }
         }
       }, [dispatch, navigate, product, productId, successUpdate])
@@ -85,6 +86,29 @@ const ProductEditScreen = () => {
         }
       }
 
+      const uploadFileHandler2 = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+    
+        try {
+          const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+    
+          const { data } = await axios.post('/api/uploadAccessories', formData, config)
+    
+          setAccessoryImage(data)
+          setUploading(false)
+        } catch (error) {
+          console.error(error)
+          setUploading(false)
+        }
+      }
+
       const submitHandler = (e) => {
         e.preventDefault()
         dispatch(
@@ -95,7 +119,8 @@ const ProductEditScreen = () => {
             brand,
             category,
             description,
-            accessory,
+            accessoryName,
+            accessoryImage
           })
         )
       }
@@ -103,105 +128,119 @@ const ProductEditScreen = () => {
     return (
         <>
           <Link to='/admin/productlist' className='btn btn-light my-3'>
-                RETOUR
-            </Link>
-            <FormContainer>
-            <h1 className='my-5'>Gérer les articles</h1>
-            {loadingUpdate && <Loader/>}
-            {errorUpdate && <Message>{errorUpdate}</Message>}
-            {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-                <div>
-                <form className="form" onSubmit={submitHandler}>
-                  <div>
-                    <h1>Edit Product {productId}</h1>
-                  </div>
-                  {loadingUpdate && <Loader></Loader>}
-                  {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
-                  {loading ? (
-                    <Loader></Loader>
-                  ) : error ? (
-                    <Message variant="danger">{error}</Message>
-                  ) : (
-                    <>
-                      <div>
-                        <label htmlFor="name">Name</label>
-                        <input
-                          id="name"
-                          type="text"
-                          placeholder="Enter name"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                        ></input>
-                      </div>
-                      
-                      <div className='input-group'>
-                        <label htmlFor="image">Image</label>
-                        <input
-                          id="image"
-                          type="text"
-                          placeholder="Enter image"
-                          value={image}
-                          onChange={(e) => setImage(e.target.value)}
-                        ></input>
-                        <label htmlFor="imageFile">Image File</label>
-                        <input
-                          type="file"
-                          id="imageFile"
-                          label="Choose Image"
-                          onChange={uploadFileHandler}
-                        ></input>
-                        {uploading && <Loader/>}
-                      </div>
-                      <div>
-                        
-                        
-                      </div>
-                      <div>
-                        <label htmlFor="category">Category</label>
-                        <input
-                          id="category"
-                          type="text"
-                          placeholder="Enter category"
-                          value={category}
-                          onChange={(e) => setCategory(e.target.value)}
-                        ></input>
-                      </div>
-                      <div>
-                        <label htmlFor="brand">Brand</label>
-                        <input
-                          id="brand"
-                          type="text"
-                          placeholder="Enter brand"
-                          value={brand}
-                          onChange={(e) => setBrand(e.target.value)}
-                        ></input>
-                      </div>
-                      
-                      <div>
-                        <label htmlFor="description">Description</label>
-                        <textarea
-                          id="description"
-                          rows="3"
-                          type="text"
-                          placeholder="Enter description"
-                          value={description}
-                          onChange={(e) => setDescription(e.target.value)}
-                        ></textarea>
-                      </div>
-                      <div>
-                        <label></label>
-                        <button className="primary" type="submit">
-                          Update
-                        </button>
-                      </div>
-                    </>
-                  )}
-                </form>
-              </div>
-            )}
+        Go Back
+      </Link>
+      <FormContainer>
+        <h1>Edit Product</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant='danger'>{error}</Message>
+        ) : (
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId='name'>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Enter name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
             
+
+            <Form.Group controlId='image'>
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter image url'
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              ></Form.Control>
+              <input
+                type="file"
+                id='image-file'
+                label='Choose File'
+                custom
+                onChange={uploadFileHandler}
+              ></input>
+              {uploading && <Loader />}
+            </Form.Group>
+
+            <Form.Group controlId='brand'>
+              <Form.Label>Brand</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter brand'
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+           
+
+            <Form.Group controlId='category'>
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter category'
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group className="mb-4" controlId='description'>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter description'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+           
+          <span></span>
+          <h6>Accessoires liés à l'article</h6>
+              <Form.Group controlId="accessories">
+                <Form.Group controlId='accessoryName'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type='name'
+                    placeholder='Enter name'
+                    value={accessoryName}
+                    onChange={(e) => setAccessoryName(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='accessoryImage'>
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter image url'
+                    value={accessoryImage}
+                    onChange={(e) => setAccessoryImage(e.target.value)}
+                  ></Form.Control>
+                  <input
+                    type="file"
+                    id='image-file'
+                    label='Choose File'
+                    custom
+                    onChange={uploadFileHandler2}
+                  ></input>
+                  {uploading && <Loader />}
+                </Form.Group>
+              </Form.Group>
             
-        </FormContainer>
+
+            <Button className="my-3" type='submit' variant='primary'>
+              Valider
+            </Button>
+          </Form>
+        )}
+      </FormContainer>
         </>
     )
 }
