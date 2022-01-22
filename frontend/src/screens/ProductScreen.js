@@ -8,6 +8,7 @@ import { listProductDetails } from '../actions/productActions';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import Accessory from '../components/Accessory';
 
 
 
@@ -21,9 +22,10 @@ import Message from '../components/Message';
 const ProductScreen = () => {
     const dispatch = useDispatch()
     const params = useParams()
-    
+
     const productDetails = useSelector((state) => state.productDetails)
     const { loading, error, product } = productDetails
+
 
    useEffect(() => {
        dispatch(listProductDetails(params.id))
@@ -58,8 +60,15 @@ const ProductScreen = () => {
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                     <Row style={{border: "1px solid blue"}}>
                         <Col sm={12} md={12} lg={4} xl={3}>
-                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName}</h6>
+                            <Image src={product.image} style={{width: '100%'}}/>
+                            <h6>{product.name}</h6>
+                            <h6>{product.user}</h6>
+                            <h6>{product.category}</h6>
+                            <h6>{product.description}</h6>
+                            <div>{product.accessories}</div>
+                           
+                            
+                            
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>

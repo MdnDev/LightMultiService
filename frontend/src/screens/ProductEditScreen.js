@@ -23,6 +23,7 @@ const ProductEditScreen = () => {
     const [brand, setBrand] = useState('')
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
+    const [accessory, setAccessory] = useState([])
     const [accessoryName, setAccessoryName] = useState('')
     const [accessoryImage, setAccessoryImage] = useState('')
     const [uploading, setUploading] = useState(false)
@@ -56,6 +57,7 @@ const ProductEditScreen = () => {
             setBrand(product.brand)
             setCategory(product.category)
             setDescription(product.description)
+            setAccessory(product.accessory)
             setAccessoryName(product.accessoryName)
             setAccessoryImage(product.accessoryImage)
           }
@@ -119,6 +121,7 @@ const ProductEditScreen = () => {
             brand,
             category,
             description,
+            accessory,
             accessoryName,
             accessoryImage
           })
@@ -204,7 +207,8 @@ const ProductEditScreen = () => {
            
           <span></span>
           <h6>Accessoires liés à l'article</h6>
-              <Form.Group controlId="accessories">
+              <Form.Group controlId="accessories" 
+              onChange={(e) => setAccessory(e.target.value)}>
                 <Form.Group controlId='accessoryName'>
                   <Form.Label>Name</Form.Label>
                   <Form.Control
