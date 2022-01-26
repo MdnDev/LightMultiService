@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
+import Accessory from '../models/productModel.js'
 
 // @description    Fetch all products
 // @route          GET /api/products
@@ -50,12 +51,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
       image: '/images/sample.jpg',
       category: 'Sample Category',
       description: 'Sample description',
-      accessories: [
-        {
-          name: 'Sample Accessory Name',
-          image: '/images/sample.jpg'
-        }
-      ]
+      accessories: ({
+        name: 'Sample name',
+        image: '/images/sample.jpg'
+      })
     })
   
     const createdProduct = await product.save()

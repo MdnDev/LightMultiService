@@ -32,6 +32,7 @@ const ProductScreen = () => {
    }, [dispatch, params])
 
    const [products, setProducts] = useState([])
+   
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -41,6 +42,8 @@ const ProductScreen = () => {
         }
         fetchProducts()
     }, [])
+
+    
 
     return (
         <Container className="py-5">
@@ -62,30 +65,17 @@ const ProductScreen = () => {
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.image} style={{width: '100%'}}/>
                             <h6>{product.name}</h6>
-                            <h6>{product.user}</h6>
-                            <h6>{product.category}</h6>
-                            <h6>{product.description}</h6>
-                            <div>{product.accessories}</div>
-                           
-                            
-                            
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
-                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName}</h6>
+                            <Image src={product.image} style={{width: '100%'}}/>
+                            <h6>{product.name}</h6>
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
-                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName}</h6>
+                            <Image src={product.image} style={{width: '100%'}}/>
+                            <h6>{product.name}</h6>
                         </Col>
-
-                        <Col sm={12} md={12} lg={4} xl={3}>
-                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName}</h6>
-                        </Col>
-
                     </Row>
                     )}
                     
