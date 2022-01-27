@@ -51,10 +51,16 @@ const deleteProduct = asyncHandler(async (req, res) => {
       image: '/images/sample.jpg',
       category: 'Sample Category',
       description: 'Sample description',
-      accessories: ({
-        name: 'Sample name',
-        image: '/images/sample.jpg'
-      })
+      accessoryName: '',
+      accessoryImage: '',
+      accessoryName2: '',
+      accessoryImage2: '',
+      accessoryName3: '',
+      accessoryImage3: '',
+      accessoryName4: '',
+      accessoryImage4: '',
+      accessoryName5: '',
+      accessoryImage5: '',
     })
   
     const createdProduct = await product.save()
@@ -72,7 +78,15 @@ const deleteProduct = asyncHandler(async (req, res) => {
       brand,
       category,
       accessoryName,
-      accessoryImage
+      accessoryImage,
+      accessoryName2,
+      accessoryImage2,
+      accessoryName3,
+      accessoryImage3,
+      accessoryName4,
+      accessoryImage4,
+      accessoryName5,
+      accessoryImage5,
      
       
     } = req.body
@@ -85,8 +99,16 @@ const deleteProduct = asyncHandler(async (req, res) => {
       product.image = image
       product.brand = brand
       product.category = category
-      product.accessories.name = accessoryName
-      product.accessories.image = accessoryImage
+      product.accessoryName = accessoryName
+      product.accessoryImage = accessoryImage
+      product.accessoryName2 = accessoryName2
+      product.accessoryImage2 = accessoryImage2
+      product.accessoryName3 = accessoryName3
+      product.accessoryImage3 = accessoryImage3
+      product.accessoryName4 = accessoryName4
+      product.accessoryImage4 = accessoryImage4
+      product.accessoryName5 = accessoryName5
+      product.accessoryImage5 = accessoryImage5
       
   
       const updatedProduct = await product.save()

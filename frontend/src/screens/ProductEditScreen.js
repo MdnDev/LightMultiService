@@ -10,6 +10,7 @@ import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
+
 const ProductEditScreen = () => {
     const navigate = useNavigate()
     const params = useParams()
@@ -24,8 +25,22 @@ const ProductEditScreen = () => {
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
     const [accessory, setAccessory] = useState([])
+
     const [accessoryName, setAccessoryName] = useState('')
     const [accessoryImage, setAccessoryImage] = useState('')
+
+    const [accessoryName2, setAccessoryName2] = useState('')
+    const [accessoryImage2, setAccessoryImage2] = useState('')
+
+    const [accessoryName3, setAccessoryName3] = useState('')
+    const [accessoryImage3, setAccessoryImage3] = useState('')
+
+    const [accessoryName4, setAccessoryName4] = useState('')
+    const [accessoryImage4, setAccessoryImage4] = useState('')
+
+    const [accessoryName5, setAccessoryName5] = useState('')
+    const [accessoryImage5, setAccessoryImage5] = useState('')
+
     const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -60,6 +75,14 @@ const ProductEditScreen = () => {
             setAccessory(product.accessory)
             setAccessoryName(product.accessoryName)
             setAccessoryImage(product.accessoryImage)
+            setAccessoryName2(product.accessoryName2)
+            setAccessoryImage2(product.accessoryImage2)
+            setAccessoryName3(product.accessoryName3)
+            setAccessoryImage3(product.accessoryImage3)
+            setAccessoryName4(product.accessoryName4)
+            setAccessoryImage4(product.accessoryImage4)
+            setAccessoryName5(product.accessoryName5)
+            setAccessoryImage5(product.accessoryImage5)
           }
         }
       }, [dispatch, navigate, product, productId, successUpdate])
@@ -87,8 +110,10 @@ const ProductEditScreen = () => {
           setUploading(false)
         }
       }
+      
+      {/* ACCESSORIES FILE HANDLERS */}
 
-      const uploadFileHandler2 = async (e) => {
+      const uploadAccessoryFileHandler = async (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
         formData.append('image', file)
@@ -111,6 +136,100 @@ const ProductEditScreen = () => {
         }
       }
 
+      const uploadAccessoryFileHandler2 = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+    
+        try {
+          const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+    
+          const { data } = await axios.post('/api/uploadAccessories', formData, config)
+    
+          setAccessoryImage2(data)
+          setUploading(false)
+        } catch (error) {
+          console.error(error)
+          setUploading(false)
+        }
+      }
+
+      const uploadAccessoryFileHandler3 = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+    
+        try {
+          const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+    
+          const { data } = await axios.post('/api/uploadAccessories', formData, config)
+    
+          setAccessoryImage3(data)
+          setUploading(false)
+        } catch (error) {
+          console.error(error)
+          setUploading(false)
+        }
+      }
+
+      const uploadAccessoryFileHandler4 = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+    
+        try {
+          const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+    
+          const { data } = await axios.post('/api/uploadAccessories', formData, config)
+    
+          setAccessoryImage4(data)
+          setUploading(false)
+        } catch (error) {
+          console.error(error)
+          setUploading(false)
+        }
+      }
+
+      const uploadAccessoryFileHandler5 = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+    
+        try {
+          const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+    
+          const { data } = await axios.post('/api/uploadAccessories', formData, config)
+    
+          setAccessoryImage5(data)
+          setUploading(false)
+        } catch (error) {
+          console.error(error)
+          setUploading(false)
+        }
+      }
+
+      {/* END OF ACCESSORIES FILE HANDLERS */}
+
       const submitHandler = (e) => {
         e.preventDefault()
         dispatch(
@@ -123,7 +242,15 @@ const ProductEditScreen = () => {
             description,
             accessory,
             accessoryName,
-            accessoryImage
+            accessoryImage,
+            accessoryName2,
+            accessoryImage2,
+            accessoryName3,
+            accessoryImage3,
+            accessoryName4,
+            accessoryImage4,
+            accessoryName5,
+            accessoryImage5
           })
         )
       }
@@ -167,7 +294,6 @@ const ProductEditScreen = () => {
                 type="file"
                 id='image-file'
                 label='Choose File'
-                custom
                 onChange={uploadFileHandler}
               ></input>
               {uploading && <Loader />}
@@ -206,9 +332,9 @@ const ProductEditScreen = () => {
             </Form.Group>
            
           <span></span>
-          <h6>Accessoires liés à l'article</h6>
-              <Form.Group controlId="accessories" 
-              onChange={(e) => setAccessory(e.target.value)}>
+              <h4>Accessoires liés à l'article</h4>
+                {/* FIRST ACCESSORY */}
+                <h5 className="my-4">Premier accessoire</h5>
                 <Form.Group controlId='accessoryName'>
                   <Form.Label>Name</Form.Label>
                   <Form.Control
@@ -231,12 +357,134 @@ const ProductEditScreen = () => {
                     type="file"
                     id='image-file'
                     label='Choose File'
-                    custom
-                    onChange={uploadFileHandler2}
+                    onChange={uploadAccessoryFileHandler}
                   ></input>
                   {uploading && <Loader />}
                 </Form.Group>
-              </Form.Group>
+
+                {/* END OF FIRST ACCESSORY */}
+
+                {/* SECOND ACCESSORY */}
+                <h5 className="my-4">Deuxième accessoire</h5>
+                <Form.Group controlId='accessoryName'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type='name'
+                    placeholder='Enter name'
+                    value={accessoryName2}
+                    onChange={(e) => setAccessoryName2(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='accessoryImage'>
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter image url'
+                    value={accessoryImage2}
+                    onChange={(e) => setAccessoryImage2(e.target.value)}
+                  ></Form.Control>
+                  <input
+                    type="file"
+                    id='image-file'
+                    label='Choose File'
+                    onChange={uploadAccessoryFileHandler2}
+                  ></input>
+                  {uploading && <Loader />}
+                  </Form.Group>
+                {/* END OF SECOND ACCESSORY */}
+
+
+                {/* THIRD ACCESSORY */}
+                <h5 className="my-4">Troisème accessoire</h5>
+                <Form.Group controlId='accessoryName'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type='name'
+                    placeholder='Enter name'
+                    value={accessoryName3}
+                    onChange={(e) => setAccessoryName3(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='accessoryImage'>
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter image url'
+                    value={accessoryImage3}
+                    onChange={(e) => setAccessoryImage3(e.target.value)}
+                  ></Form.Control>
+                  <input
+                    type="file"
+                    id='image-file'
+                    label='Choose File'
+                    onChange={uploadAccessoryFileHandler3}
+                  ></input>
+                  {uploading && <Loader />}
+                  </Form.Group>
+                {/* END OF THIRD ACCESSORY */}
+
+                {/* FOURTH ACCESSORY */}
+                <h5 className="my-4">Quatrième accessoire</h5>
+                <Form.Group controlId='accessoryName'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type='name'
+                    placeholder='Enter name'
+                    value={accessoryName4}
+                    onChange={(e) => setAccessoryName4(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='accessoryImage'>
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter image url'
+                    value={accessoryImage4}
+                    onChange={(e) => setAccessoryImage4(e.target.value)}
+                  ></Form.Control>
+                  <input
+                    type="file"
+                    id='image-file'
+                    label='Choose File'
+                    onChange={uploadAccessoryFileHandler4}
+                  ></input>
+                  {uploading && <Loader />}
+                  </Form.Group>
+                {/* END OF FOURTH ACCESSORY */}
+
+                {/* FIFTH ACCESSORY */}
+                <h5 className="my-4">Cinquième accessoire</h5>
+                <Form.Group controlId='accessoryName'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type='name'
+                    placeholder='Enter name'
+                    value={accessoryName5}
+                    onChange={(e) => setAccessoryName5(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='accessoryImage'>
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter image url'
+                    value={accessoryImage5}
+                    onChange={(e) => setAccessoryImage5(e.target.value)}
+                  ></Form.Control>
+                  <input
+                    type="file"
+                    id='image-file'
+                    label='Choose File'
+                    onChange={uploadAccessoryFileHandler5}
+                  ></input>
+                  {uploading && <Loader />}
+                  </Form.Group>
+                {/* END OF FIFTH ACCESSORY */}
+              
             
 
             <Button className="my-3" type='submit' variant='primary'>

@@ -63,19 +63,31 @@ const ProductScreen = () => {
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                     <Row style={{border: "1px solid blue"}}>
                         <Col sm={12} md={12} lg={4} xl={3}>
-                            <Image src={product.image} style={{width: '100%'}}/>
-                            <h6>{product.name}</h6>
+                            <Image src={product.accessoryImage} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName}</h6>
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
-                            <Image src={product.image} style={{width: '100%'}}/>
-                            <h6>{product.name}</h6>
+                            <Image src={product.accessoryImage2} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName2}</h6>
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
-                            <Image src={product.image} style={{width: '100%'}}/>
-                            <h6>{product.name}</h6>
+                            <Image src={product.accessoryImage3} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName3}</h6>
                         </Col>
+
+                        <Col sm={12} md={12} lg={4} xl={3}>
+                            <Image src={product.accessoryImage4} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName4}</h6>
+                        </Col>
+
+                        <Col sm={12} md={12} lg={4} xl={3}>
+                            <Image src={product.accessoryImage5} style={{width: '100%'}}/>
+                            <h6>{product.accessoryName5}</h6>
+                        </Col>
+
+                        
                     </Row>
                     )}
                     

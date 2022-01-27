@@ -1,15 +1,6 @@
 import mongoose from "mongoose";
 
-const accessorySchema = mongoose.Schema(
-    {
-        name: String,
-        image: String,
-    },
-    {
-        timestamps: true,
-    }
 
-)
 
 const productSchema = mongoose.Schema({
         user: {
@@ -45,7 +36,54 @@ const productSchema = mongoose.Schema({
             default: 0
         },
 
-       accessories: [accessorySchema]
+       accessoryName: {
+           type: String,
+           required: false,
+       },
+
+       accessoryImage: {
+        type: String,
+        required: false,
+        },
+
+        accessoryName2: {
+            type: String,
+            required: false,
+        },
+
+        accessoryImage2: {
+        type: String,
+        required: false,
+        },
+
+        accessoryName3: {
+            type: String,
+            required: false,
+        },
+
+        accessoryImage3: {
+        type: String,
+        required: false,
+        },
+
+        accessoryName4: {
+            type: String,
+            required: false,
+        },
+
+        accessoryImage4: {
+        type: String,
+        required: false,
+        },
+        accessoryName5: {
+            type: String,
+            required: false,
+        },
+
+        accessoryImage5: {
+        type: String,
+        required: false,
+        },
     
     },
     {
