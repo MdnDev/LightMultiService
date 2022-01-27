@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button, Collapse } from 'react-bootstrap';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'
-import Description from '../components/Description';
 import { listProductDetails } from '../actions/productActions';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import Accessory from '../components/Accessory';
+
 
 
 
@@ -43,6 +42,8 @@ const ProductScreen = () => {
         fetchProducts()
     }, [])
 
+    const [open, setOpen] = useState(false);
+
     
 
     return (
@@ -50,9 +51,9 @@ const ProductScreen = () => {
             <Row style={{border: "1px solid blue"}} >
                 <Col style={{border: "1px solid blue"}} xs="12" sm="12" md="12" lg="6" xl="6">
                     <MDBBreadcrumb className="mx-auto">
-                        <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
-                        <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
-                        <MDBBreadcrumbItem>Element cliqué</MDBBreadcrumbItem>
+                        <MDBBreadcrumbItem><a href="">Element cliqué</a></MDBBreadcrumbItem>
+                        <MDBBreadcrumbItem><a href="">Element cliqué</a></MDBBreadcrumbItem>
+                        <MDBBreadcrumbItem><a href="">Element cliqué</a></MDBBreadcrumbItem>
                     </MDBBreadcrumb>
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                         <div>
@@ -61,30 +62,30 @@ const ProductScreen = () => {
 
                     )}
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
-                    <Row style={{border: "1px solid blue"}}>
+                    <Row className="py-3" style={{border: "1px solid blue"}}>
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName}</h6>
+                            <h6 className="my-2">{product.accessoryName}</h6>
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage2} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName2}</h6>
+                            <h6 className="my-2">{product.accessoryName2}</h6>
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage3} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName3}</h6>
+                            <h6 className="my-2">{product.accessoryName3}</h6>
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage4} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName4}</h6>
+                            <h6 className="my-2">{product.accessoryName4}</h6>
                         </Col>
 
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage5} style={{width: '100%'}}/>
-                            <h6>{product.accessoryName5}</h6>
+                            <h6 className="my-2">{product.accessoryName5}</h6>
                         </Col>
 
                         
@@ -96,7 +97,16 @@ const ProductScreen = () => {
 
                 <Col style={{border: "1px solid blue"}} xs="12" sm="12" md="12" lg="6" xl="6">
                     <h3 className="mb-3">{product.name}</h3>
-                    <Description />
+                    <Button
+                        onClick={() => setOpen(!open)}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={open}
+                        variant='outline-dark'>
+                        click
+                    </Button>
+                    <Collapse in={open}>
+                        <p>{product.description}</p>
+                    </Collapse>
                     <div className="d-flex my-5">
                         <h5 className="mt-1">Catégories:</h5>
                         <div className="d-flex">
