@@ -24,20 +24,17 @@ const GearScreen = () => {
             <MDBContainer>
                 
                 <MDBRow>
-                    <MDBCol>
                         <MDBBreadcrumb className="pt-1">
                             <MDBBreadcrumbItem>
-                                <p>Element 1</p>
+                                Element 1
                             </MDBBreadcrumbItem>
                             <MDBBreadcrumbItem>
-                                <p>Element 2</p>
+                                Element 2
                             </MDBBreadcrumbItem>
                             <MDBBreadcrumbItem>
-                                <p>Element 3</p>
+                                Element 3
                             </MDBBreadcrumbItem>
                         </MDBBreadcrumb>
-                    </MDBCol>
-                    
                 </MDBRow>
                     
                 <MDBRow className="py-4">
