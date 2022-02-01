@@ -2,13 +2,17 @@ import express from "express";
 import categories from "../data/categories.js";
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.json(categories)
-})
+import { protect, admin } from '../middleware/authMiddleware.js'
 
-router.get('/:id', (req, res) => {
-    const category = categories.find((c) => c._id === req.params.id)
-    res.json(category)
-})
+import { getCategories, getCategoryById, deleteCategory,
+    createCategory,
+    updateCategory } from '../controllers/categoryController.js'
+
+router.route('/').get(getCategories).post(protect, admin, createCategory)
+
+router.route('/:id')
+    .get(getCategoryById)
+    .delete(protect, admin, deleteCategory)
+    .put(protect, admin, updateCategory)
 
 export default router

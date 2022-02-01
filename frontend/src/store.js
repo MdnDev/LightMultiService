@@ -10,12 +10,12 @@ import {
 
 import 
 { 
-    accessoryListReducer, 
-    accessoryDetailsReducer, 
-    accessoryDeleteReducer,
-    accessoryCreateReducer,
-    accessoryUpdateReducer 
-} from './reducers/accessoryReducers';
+    categoryListReducer, 
+    categoryDetailsReducer, 
+    categoryDeleteReducer,
+    categoryCreateReducer,
+    categoryUpdateReducer 
+} from './reducers/categoryReducers';
 
 import {
         userLoginReducer,
@@ -32,11 +32,11 @@ const reducer = combineReducers({
     productDelete: productDeleteReducer,
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
-    accessoryList: accessoryListReducer,
-    accessoryDetails: accessoryDetailsReducer,
-    accessoryDelete: accessoryDeleteReducer,
-    accessoryCreate: accessoryCreateReducer,
-    accessoryUpdate: accessoryUpdateReducer,
+    categoryList: categoryListReducer,
+    categoryDetails: categoryDetailsReducer,
+    categoryDelete: categoryDeleteReducer,
+    categoryCreate: categoryCreateReducer,
+    categoryUpdate: categoryUpdateReducer,
     userUpdateProfile: userUpdateProfileReducer,
     userLogin: userLoginReducer,
     userDetails: userDetailsReducer,
