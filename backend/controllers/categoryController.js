@@ -47,7 +47,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
   const createCategory = asyncHandler(async (req, res) => {
     const category = new Category({
       name: 'catégorie type',
-      subCategory: 'sous-catégorie type',
+      subCategories: 'sous-catégorie type',
     })
   
     const createdCategory = await category.save()

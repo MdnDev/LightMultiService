@@ -37,12 +37,10 @@ const NavBar = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-                {subCategories.map(article => (
-                    <Dropdown.Item href="#/action-1">{article.name}</Dropdown.Item>
+                {subCategories.map(subCategory => (
+                    <Dropdown.Item href="#/action-1">{subCategory.name}</Dropdown.Item>
                 ))}
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+               
             </Dropdown.Menu>
 
         </Dropdown>

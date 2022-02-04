@@ -78,9 +78,9 @@ const CategoryEditScreen = () => {
             <Form.Group controlId='category'>
               <Form.Label>Catégorie</Form.Label>
               <Form.Control
-                type='category'
+                type='catégorie'
                 placeholder='Catégorie'
-                value={category}
+                value={categoryName}
                 onChange={(e) => setCategoryName(e.target.value)}
               ></Form.Control>
             </Form.Group>

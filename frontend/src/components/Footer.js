@@ -103,13 +103,13 @@ const Footer = () => {
                             
                             <Nav.Item>
                               <Link className="Nav_link" to="/admin/productlist" style={{ display: "block"}}>
-                                  <>Articles</>
+                                  <div>Articles</div>
                               </Link>
                             </Nav.Item>
 
                             <Nav.Item>
-                              <Link className="Nav_link" to="/admin/accessorylist" style={{ display: "block"}}>
-                                  <>Accessoires</>
+                              <Link className="Nav_link" to="/admin/categorylist" style={{ display: "block"}}>
+                                  <div>Categories</div>
                               </Link>
                             </Nav.Item>
                             
