@@ -19,11 +19,11 @@ import {
 } from '../constants/productConstants'
 import { logout } from './userActions'
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = ({ name='' }) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
-        const { data } = await axios.get('/api/products')
+        const { data } = await axios.get(`api/products?name=${name}`)
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,

@@ -3,6 +3,10 @@ import axios from 'axios'
 import { MDBRow, MDBCol, MDBContainer, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import NavBar from '../components/NavBar';
 import Product from '../components/Product';
+import SearchBox from '../components/SearchBox';
+import { Routes, Route } from 'react-router-dom';
+
+
 
 
 
@@ -52,10 +56,7 @@ const GearScreen = () => {
                     
 
                     <MDBCol xs="12" sm="12" md="3" lg="3" xl="3">
-                        <form className='d-flex input-group w-auto py-2'>
-                            <input type='search' className='form-control' placeholder='Type query' aria-label='Search'/>
-                            <MDBBtn color='outline-success'>Chercher</MDBBtn>
-                        </form>
+                            <SearchBox/>
                         <NavBar/>
                     </MDBCol>
 
