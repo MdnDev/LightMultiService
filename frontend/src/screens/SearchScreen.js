@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { listProducts } from '../actions/productActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Product from '../components/Product'
@@ -15,13 +15,18 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 const SearchScreen = () => {
 const {name = 'all'} = useParams()
 const dispatch = useDispatch()
-
+const navigate = useNavigate()
 const productList =  useSelector((state) => state.productList)
 const { loading, error, products } = productList
 
 useEffect(() => {
-    dispatchEvent(listProducts({ name: name !== 'all' ? name: '' }))
+    dispatch(listProducts({ name: name !== 'all' ? name: '' }))
 }, [dispatch, name])
+
+const getFilterUrl = (filter) => {
+    const filterName = filter.name || name;
+    return `/search/name/${filterName}`;
+  };
   return (
     <MDBContainer>
         <MDBRow>

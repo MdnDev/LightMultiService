@@ -7,9 +7,19 @@ import Product from '../models/productModel.js'
 // @access         Public
 
 const getProducts = asyncHandler(async (req, res) => {
-    const products = await Product.find({})
+  const products = await Product.find({})
 
-    res.json(products)
+  res.json(products)
+})
+
+const queryProducts = asyncHandler(async (req, res) => {
+  const name = req.query.name || '';
+  const nameFilter =  name ? { name: {$regex: name, $options: 'i'} } : {};
+  const products = await Product.find({
+    ...nameFilter,
+  })
+  res.send(products)
+  
 })
 
 // @description    Fetch single product
@@ -119,20 +129,13 @@ const deleteProduct = asyncHandler(async (req, res) => {
     }
   })
 
-  const queryProduct = asyncHandler(async (req, res) => {
-    const name = req.query.name || '';
-    const nameFilter =  name ? { name: { $regex: name, $options: 'i' } } : {};
-    const products = await Product.find({
-      ...nameFilter,
-    }).populate('')
-    res.send(products);
-  })
-
+  
 export {
     getProducts,
     getProductById,
     deleteProduct,
     createProduct,
     updateProduct,
-    queryProduct
+    queryProducts
+    
 }
