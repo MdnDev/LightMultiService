@@ -47,7 +47,7 @@ const getFilterUrl = (filter) => {
         </MDBRow>
         <MDBRow>
             <MDBCol>
-                <h3>Department</h3>
+                <h3>Catégories</h3>
                 <div>
                 {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
                 <ul>

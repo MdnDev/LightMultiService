@@ -13,7 +13,7 @@ const NavBar = () => {
     const {category = 'all' } = useParams()
     const dispatch = useDispatch()
     const productCategoryList =  useSelector((state) => state.productCategoryList)
-    const { loadingCategories, errorCategories, categories } = productCategoryList
+    const { loading:loadingCategories, errorCategories, categories } = productCategoryList
 
     useEffect(() => {
         dispatch(listProductCategories({ 
@@ -60,7 +60,7 @@ const NavBar = () => {
                     <li key={c}>
                         <Link
                         className={c === category ? 'active' : ''}
-                        to={getFilterUrl({ category: c })}
+                        to={getFilterUrl({category:c})}
                         >
                         {c}
                         </Link>

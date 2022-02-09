@@ -68,7 +68,7 @@ const GearScreen = () => {
 
                     <MDBCol xs="12" sm="12" md="3" lg="3" xl="3">
                             <SearchBox/>
-                        
+                            
                     </MDBCol>
 
                 </MDBRow>
