@@ -7,18 +7,16 @@ import Product from '../models/productModel.js'
 // @access         Public
 
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
-
-  res.json(products)
-})
-
-const queryProducts = asyncHandler(async (req, res) => {
   const name = req.query.name || '';
-  const nameFilter =  name ? { name: {$regex: name, $options: 'i'} } : {};
+  const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
   const products = await Product.find({
     ...nameFilter,
   })
   res.send(products)
+})
+
+const queryProducts = asyncHandler(async (req, res) => {
+  
   
 })
 
@@ -59,7 +57,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
       name: 'Sample name',
       user: req.user._id,
       image: '/images/sample.jpg',
-      category: 'Sample Category',
+      category: 'sample category',
       description: 'Sample description',
       accessoryName: '',
       accessoryImage: '',
