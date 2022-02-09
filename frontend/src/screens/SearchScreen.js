@@ -6,45 +6,66 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Product from '../components/Product'
 import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
-
-
-
-
+import { Link } from 'react-router-dom';
 
 
 const SearchScreen = () => {
-const {name = 'all'} = useParams()
+const { name = 'all', category = 'all' } = useParams()
 const dispatch = useDispatch()
-const navigate = useNavigate()
+
 const productList =  useSelector((state) => state.productList)
 const { loading, error, products } = productList
 
+const productCategoryList =  useSelector((state) => state.productCategoryList)
+const { loading:loadingCategories, errorCategories, categories } = productCategoryList
+
+
+
 useEffect(() => {
-    dispatch(listProducts({ name: name !== 'all' ? name: '' }))
-}, [dispatch, name])
+    dispatch(listProducts({ 
+        name: name !== 'all' ? name: '',
+        category: category !== 'all' ? category : '',
+    }))
+}, [dispatch, name, category])
 
 const getFilterUrl = (filter) => {
     const filterName = filter.name || name;
-    return `/search/name/${filterName}`;
+    const filterCategory = filter.category || category;
+    return `/search/name/${filterName}category/${filterCategory}`;
   };
   return (
     <MDBContainer>
+        <Link to='/gear' className='btn btn-light my-3'>
+        Retour
+      </Link>
         <MDBRow>
-        {loading ? ( <Loader/> ) : error ? ( <Message variant="danger">{error}</Message> ) : (
-            <div>
-                {products.length} Results
-            </div>
-        )}
+            {loading ? ( <Loader/> ) : error ? ( <Message variant="danger">{error}</Message> ) : (
+                <div>
+                    {products.length} Article(s) trouvé(s)
+                </div>
+            )}
         </MDBRow>
         <MDBRow>
             <MDBCol>
                 <h3>Department</h3>
+                <div>
+                {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
                 <ul>
-                    <li>Category 1</li>
+                    {categories.map(c => (
+                        <li key={c}>
+                            <Link 
+                                className={c === category ? 'active': ''}
+                                to={getFilterUrl({category:c})}>
+                                    {c}
+                            </Link>
+                        </li>
+                    ))} 
                 </ul>
+            )}
+            </div>
             </MDBCol>
 
-            <MDBCol>
+            <MDBRow>
                 {loading ? ( <Loader/> ) : error ? ( <Message variant="danger">{error}</Message> ) : (
                 <>
                     {products.length === 0 && (
@@ -52,15 +73,14 @@ const getFilterUrl = (filter) => {
                     )}
                     <MDBRow>
                         {products.map((product) => (
-                            <Product 
-                                key={product._id}
-                                product={product}>
-                            </Product>
+                           <MDBCol key={product._id} sm={12} md={12} lg={4} xl={3}>
+                           <Product product={product} style={{ width: '100%'}}/>
+                           </MDBCol>
                         ))}
                     </MDBRow>
                 </>
                 )}
-            </MDBCol>
+            </MDBRow>
         </MDBRow>
     </MDBContainer>
   )

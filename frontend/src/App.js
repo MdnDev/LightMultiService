@@ -33,6 +33,8 @@ function App() {
             <Route path="/login" element={<LoginScreen/>}/>
             <Route path="/search/name" element={<SearchScreen />} exact></Route>
             <Route path="/search/name/:name" element={<SearchScreen/>}/>
+            <Route path="/search/category/:category" element={<SearchScreen/>}/>
+            <Route path="/search/category/:category/name/:name" element={<SearchScreen/>}/>
             
           </Routes>
         </Container>

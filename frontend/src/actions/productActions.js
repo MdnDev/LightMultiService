@@ -15,15 +15,18 @@ import {
     PRODUCT_UPDATE_REQUEST,
     PRODUCT_UPDATE_SUCCESS,
     PRODUCT_UPDATE_FAIL,
+    PRODUCT_CATEGORY_LIST_REQUEST,
+    PRODUCT_CATEGORY_LIST_SUCCESS,
+    PRODUCT_CATEGORY_LIST_FAIL,
     
 } from '../constants/productConstants'
 import { logout } from './userActions'
 
-export const listProducts = ({ name = '' }) => async (dispatch) => {
+export const listProducts = ({ name = '', category = '' }) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
-        const { data } = await axios.get(`/api/products?name=${name}`)
+        const { data } = await axios.get(`/api/products?name=${name}&category=${category}`)
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
@@ -35,6 +38,24 @@ export const listProducts = ({ name = '' }) => async (dispatch) => {
             payload: error.response && error.response.data.message ? error.response.data.message : error.message,
         })
     }
+}
+
+export const listProductCategories = () => async (dispatch) => {
+  try {
+      dispatch({ type: PRODUCT_CATEGORY_LIST_REQUEST })
+
+      const { data } = await axios.get(`/api/products/categories`)
+
+      dispatch({
+          type: PRODUCT_CATEGORY_LIST_SUCCESS,
+          payload: data,
+      })
+  } catch (error) {
+      dispatch({
+          type: PRODUCT_CATEGORY_LIST_FAIL,
+          payload: error.response && error.response.data.message ? error.response.data.message : error.message,
+      })
+  }
 }
 
 export const listProductDetails = (id) => async (dispatch) => {

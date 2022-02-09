@@ -5,14 +5,15 @@ import { protect, admin } from '../middleware/authMiddleware.js'
 
 import { getProducts, getProductById, deleteProduct,
     createProduct,
-    updateProduct, 
-    queryProducts} from '../controllers/productController.js'
+    updateProduct,
+    getCategories 
+  } from '../controllers/productController.js'
 
 
 router.route('/').get(getProducts)
 .post(protect, admin, createProduct)
 
-router.route('/').get(queryProducts)
+router.route('/categories').get(getCategories)
 
 router.route('/:id')
   .get(getProductById)

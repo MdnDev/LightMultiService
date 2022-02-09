@@ -4,7 +4,12 @@ import { MDBRow, MDBCol, MDBContainer, MDBBtn, MDBBreadcrumb, MDBBreadcrumbItem 
 import NavBar from '../components/NavBar';
 import Product from '../components/Product';
 import SearchBox from '../components/SearchBox';
-import { Routes, Route } from 'react-router-dom';
+import { listProductCategories } from '../actions/productActions';
+import { useDispatch } from 'react-redux';
+;
+
+
+
 
 
 
@@ -12,6 +17,8 @@ import { Routes, Route } from 'react-router-dom';
 
 const GearScreen = () => {
     const [products, setProducts] = useState([])
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -21,6 +28,10 @@ const GearScreen = () => {
         }
         fetchProducts()
     }, [])
+
+    useEffect(() => {
+        dispatch(listProductCategories())
+    }, [dispatch])
 
     return (
         < >
@@ -57,7 +68,7 @@ const GearScreen = () => {
 
                     <MDBCol xs="12" sm="12" md="3" lg="3" xl="3">
                             <SearchBox/>
-                        <NavBar/>
+                        
                     </MDBCol>
 
                 </MDBRow>

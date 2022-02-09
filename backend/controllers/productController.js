@@ -8,17 +8,17 @@ import Product from '../models/productModel.js'
 
 const getProducts = asyncHandler(async (req, res) => {
   const name = req.query.name || '';
+  const category = req.query.category || '';
   const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
+  const categoryFilter = category ? { category } : {};
   const products = await Product.find({
     ...nameFilter,
+    ...categoryFilter,
   })
   res.send(products)
 })
 
-const queryProducts = asyncHandler(async (req, res) => {
-  
-  
-})
+
 
 // @description    Fetch single product
 // @route          GET /api/product/:id
@@ -127,6 +127,11 @@ const deleteProduct = asyncHandler(async (req, res) => {
     }
   })
 
+  const getCategories  = asyncHandler(async (req, res) => {
+    const categories = await Product.find().distinct('category')
+    res.send(categories)
+  })
+
   
 export {
     getProducts,
@@ -134,6 +139,6 @@ export {
     deleteProduct,
     createProduct,
     updateProduct,
-    queryProducts
+    getCategories
     
 }
