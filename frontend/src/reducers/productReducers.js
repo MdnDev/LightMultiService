@@ -32,7 +32,7 @@ export const productListReducer = (state = { products: [] }, action) => {
     }
 };
 
-export const productCategoryListReducer = (state = { products: [] }, action) => {
+export const productCategoryListReducer = (state = { categories: [] }, action) => {
     switch (action.type) {
         case PRODUCT_CATEGORY_LIST_REQUEST:
             return { loading: true }

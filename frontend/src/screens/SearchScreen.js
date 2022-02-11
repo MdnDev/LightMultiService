@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { listProducts } from '../actions/productActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Product from '../components/Product'
