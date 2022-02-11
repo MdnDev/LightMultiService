@@ -108,11 +108,12 @@ const GearScreen = () => {
                     {categories.map(c => (
                         <Dropdown key={c} className="py-1">
                             <Dropdown.Toggle
-                            variant="dark" id="dropdown-basic" style={{width: '100%'}} 
+                                variant="dark" id="dropdown-basic" style={{width: '100%'}} 
                                 className={c === category ? 'active': ''}
                                 to={getFilterUrl({category:c})}>
                                     {c}
                             </Dropdown.Toggle>
+                            
                         </Dropdown>
                     ))} 
                 </ul>
