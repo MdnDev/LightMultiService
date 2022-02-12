@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Carousel, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Clients from '../components/Clients';
 import Products from '../components/Products';
 import Message from '../components/Message'
@@ -131,9 +132,9 @@ const HomeScreen = () => {
             )}
 
             <div className="text-center py-4">
-                <Button variant="success">
-                    EXPLORER
-                </Button>
+                    <Link to='/gear' className='btn btn-success my-3'>
+                        En voir plus
+                    </Link>
             </div>
             
 
