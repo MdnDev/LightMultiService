@@ -23,15 +23,15 @@ const { loading:loadingCategories, errorCategories, categories } = productCatego
 
 useEffect(() => {
     dispatch(listProducts({ 
-        name: name !== 'all' ? name: '',
-        category: category !== 'all' ? category : '',
+        name: name !== 'all' ? name : '',
+        category: category !== 'all' ? category : ''
     }))
 }, [dispatch, name, category])
 
 const getFilterUrl = (filter) => {
-    const filterName = filter.name || name;
     const filterCategory = filter.category || category;
-    return `/search/name/${filterName}category/${filterCategory}`;
+    const filterName = filter.name || name;
+    return `/search/category/${filterCategory}/name/${filterName}`;
   };
   return (
     <MDBContainer>

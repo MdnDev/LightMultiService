@@ -57,9 +57,9 @@ const GearScreen = () => {
     }, [dispatch, name, category])
     
     const getFilterUrl = (filter) => {
-        const filterName = filter.name || name;
         const filterCategory = filter.category || category;
-        return `/search/name/${filterName}category/${filterCategory}`;
+        const filterName = filter.name || name;
+        return `/search/category/${filterCategory}/name/${filterName}`;
       };
 
     return (
@@ -106,15 +106,13 @@ const GearScreen = () => {
                 {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
                 <ul>
                     {categories.map(c => (
-                        <Dropdown key={c} className="py-1">
-                            <Dropdown.Toggle
-                                variant="dark" id="dropdown-basic" style={{width: '100%'}} 
-                                className={c === category ? 'active': ''}
-                                to={getFilterUrl({category:c})}>
-                                    {c}
-                            </Dropdown.Toggle>
-                            
-                        </Dropdown>
+                        <li key={c}>
+                        <Link 
+                            className={c === category ? 'active': ''}
+                            to={getFilterUrl({category:c})}>
+                                {c}
+                        </Link>
+                        </li>
                     ))} 
                 </ul>
             )}
