@@ -16,7 +16,11 @@ import {
     PRODUCT_UPDATE_RESET,
     PRODUCT_CATEGORY_LIST_REQUEST,
     PRODUCT_CATEGORY_LIST_SUCCESS,
-    PRODUCT_CATEGORY_LIST_FAIL
+    PRODUCT_CATEGORY_LIST_FAIL,
+    PRODUCT_RANDOM_REQUEST,
+    PRODUCT_RANDOM_SUCCESS,
+    PRODUCT_RANDOM_FAIL
+
 } from '../constants/productConstants';
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -100,5 +104,18 @@ export const productUpdateReducer = (state = { product: {} }, action) => {
         return state
     }
   };
+
+  export const productRandomReducer = (state = { products: [] } , action) => {
+    switch(action.type) {
+        case PRODUCT_RANDOM_REQUEST:
+            return { loading: true, products: [] }
+        case PRODUCT_RANDOM_SUCCESS:
+            return { loading: false, products: action.payload }
+        case PRODUCT_RANDOM_FAIL:
+            return { loading: false, error: action.payload }
+        default:
+            return state
+    }
+};
 
 

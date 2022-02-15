@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { MDBRow, MDBCol, MDBContainer, MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
+import { MDBRow, MDBCol, MDBContainer } from "mdb-react-ui-kit";
 import Product from '../components/Product';
 import SearchBox from '../components/SearchBox';
 import Loader from '../components/Loader';
@@ -8,7 +8,7 @@ import { listProductCategories, listProducts } from '../actions/productActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Dropdown, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 
 
@@ -19,18 +19,6 @@ import { Dropdown, Button } from 'react-bootstrap'
 
 
 const GearScreen = () => {
-    {/*const [products, setProducts] = useState([])
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            const { data } = await axios.get('/api/products')
-
-            setProducts(data)
-        }
-        fetchProducts()
-    }, [])*/}
     
     const { name = 'all', category = 'all' } = useParams()
     const dispatch = useDispatch()

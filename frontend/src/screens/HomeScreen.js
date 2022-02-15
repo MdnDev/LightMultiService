@@ -8,6 +8,7 @@ import Products from '../components/Products';
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions';
+import ProductCarousel from '../components/ProductCarousel';
 
 
 
@@ -44,36 +45,36 @@ const HomeScreen = () => {
                 </div>
                 
             </Row>
-            <Row className="my-5" style={{ textAlign: 'center'}}>
+            <Row className="my-5" style={{ textAlign: 'center', backgroundColor: 'snow'}}>
                 <Carousel fade style={{width: '100%'}}>
                     <Carousel.Item>
                         <img
-                        style={{height: '800px', width: '450px'}}
+                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/Materiel9.jpg"
                         alt="First slide"
                         />
                         <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Third slide label</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                         <img
+                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner1.jpg"
                         alt="Second slide"
                         />
 
                         <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Third slide label</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                         <img
+                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner2.jpg"
                         alt="Third slide"
@@ -81,12 +82,13 @@ const HomeScreen = () => {
 
                         <Carousel.Caption>
                         <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                         <img
+                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner3.jpg"
                         alt="Third slide"
@@ -94,12 +96,13 @@ const HomeScreen = () => {
 
                         <Carousel.Caption>
                         <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
                         <img
+                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner4.jpg"
                         alt="Third slide"
@@ -107,7 +110,7 @@ const HomeScreen = () => {
 
                         <Carousel.Caption>
                         <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
@@ -121,15 +124,7 @@ const HomeScreen = () => {
                 </div>
             </Row>
 
-            {loading ? ( <Loader /> ) : error ? ( <Message variant='danger'>{error}</Message>) : (
-                <Row >
-                {products.map(product => (
-                        <Col key={product._id} sm={12} md={12} lg={3} xl={3}>
-                            <Products product={product} style={{ width: '100%'}}/>
-                        </Col>
-                    ))}
-            </Row>
-            )}
+            <ProductCarousel/>
 
             <div className="text-center py-4">
                     <Link to='/gear' className='btn btn-success my-3'>

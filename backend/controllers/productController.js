@@ -132,6 +132,12 @@ const deleteProduct = asyncHandler(async (req, res) => {
     res.send(categories)
   })
 
+  const getRandomProducts  = asyncHandler(async (req, res) => {
+    const products = await Product.find({}).limit(4)
+    
+    res.send(products)
+  })
+
   
 export {
     getProducts,
@@ -139,6 +145,7 @@ export {
     deleteProduct,
     createProduct,
     updateProduct,
-    getCategories
+    getCategories,
+    getRandomProducts
     
 }

@@ -18,6 +18,9 @@ import {
     PRODUCT_CATEGORY_LIST_REQUEST,
     PRODUCT_CATEGORY_LIST_SUCCESS,
     PRODUCT_CATEGORY_LIST_FAIL,
+    PRODUCT_RANDOM_REQUEST,
+    PRODUCT_RANDOM_SUCCESS,
+    PRODUCT_RANDOM_FAIL
     
 } from '../constants/productConstants'
 import { logout } from './userActions'
@@ -189,6 +192,24 @@ export const createProduct = () => async (dispatch, getState) => {
       })
     }
   }
+
+  export const listRandomProducts = () => async (dispatch) => {
+    try {
+        dispatch({ type: PRODUCT_RANDOM_REQUEST })
+
+        const { data } = await axios.get(`/api/products/random`)
+
+        dispatch({
+            type: PRODUCT_RANDOM_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_RANDOM_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message,
+        })
+    }
+}
   
 
 

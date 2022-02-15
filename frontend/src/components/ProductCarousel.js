@@ -1,45 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Carousel, Image } from 'react-bootstrap'
+import Loader from './Loader'
+import Message from './Message'
+import { listRandomProducts } from '../actions/productActions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ProductCarousel = () => {
-    return (
-        <Carousel pause='hover' variant="dark" sm={12} md={6} lg={4} xl={3}>
-            <Carousel.Item>
-                <Image src="../../images/protProduct1.jpg" fluid/>
-                <Carousel.Caption>
-                    <h4>Basic Carousel Caption</h4>
-                </Carousel.Caption>
-            </Carousel.Item>
+    const dispatch = useDispatch()
 
-            <Carousel.Item>
-                <Image src="../../images/protProduct2.jpg" fluid/>
-                <Carousel.Caption>
-                    <h4>Basic Carousel Caption</h4>
-                </Carousel.Caption>
-            </Carousel.Item>
+    const productRandom = useSelector((state) => state.productRandom)
+    const { loading, error, products } = productRandom
 
-            <Carousel.Item>
-                <Image src="../../images/protProduct3.jpg" fluid/>
-                <Carousel.Caption>
-                    <h4>Basic Carousel Caption</h4>
-                </Carousel.Caption>
-            </Carousel.Item>
-
-            <Carousel.Item>
-                <Image src="../../images/protProduct4.jpg" fluid/>
-                <Carousel.Caption>
-                    <h4>Basic Carousel Caption</h4>
-                </Carousel.Caption>
-            </Carousel.Item>
-
-            <Carousel.Item>
-                <Image src="../../images/protProduct2.jpg" fluid/>
-                <Carousel.Caption>
-                    <h4>Basic Carousel Caption</h4>
-                </Carousel.Caption>
-            </Carousel.Item>
-        </Carousel>
-    )
+    useEffect(() => {
+        dispatch(listRandomProducts())
+    }, [dispatch])
+    return loading ? <Loader /> : error ? 
+        <Message variant="danger">{error}</Message> : (
+            <Carousel pause="hover" className= 'bg-dark' style={{ textAlign: 'center'}}>
+                {products.map(product => (
+                    <Carousel.Item key={product._id}>
+                        <Link to={`/product/${product._id}`}>
+                            <Image src={product.image} alt={product.name} fluid/>
+                            <Carousel.Caption className='carousel-caption'>
+                                <h2>{product.name}</h2>
+                            </Carousel.Caption>
+                        </Link>
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+        )
 }
 
 export default ProductCarousel

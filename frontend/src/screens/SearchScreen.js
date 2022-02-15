@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 
+
 const SearchScreen = () => {
 const { name = 'all', category = 'all' } = useParams()
 const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const getFilterUrl = (filter) => {
             )}
         </MDBRow>
         <MDBRow>
-            <MDBCol xs="12" sm="12" md="9" lg="4" xl="6" style={{border: '1px solid black'}}>
+            <MDBCol xs="12" sm="12" md="3" lg="3" xl="3" style={{border: '1px solid black'}}>
                 <h3>Catégories</h3>
                 <div>
                 {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
@@ -69,8 +70,9 @@ const getFilterUrl = (filter) => {
                 )}
                 </div>
             </MDBCol>
-            <MDBCol xs="12" sm="12" md="9" lg="6" xl="6"
+            <MDBCol xs="12" sm="12" md="9" lg="9" xl="9"
                 style={{border: '1px solid black'}}>
+                    <MDBRow>
                     {loading ? ( <Loader/> ) : error ? ( <Message variant="danger">{error}</Message> ) : (
                     <>
                         {products.length === 0 && (
@@ -78,13 +80,14 @@ const getFilterUrl = (filter) => {
                         )}
                         <MDBRow>
                             {products.map((product) => (
-                            <MDBCol key={product._id} sm={12} md={12} lg={4} xl={4}>
+                            <MDBCol key={product._id} sm={12} md={12} lg={4} xl={3}>
                             <Product product={product} />
                             </MDBCol>
                             ))}
                         </MDBRow>
                     </>
                     )}
+                    </MDBRow>
             </MDBCol>
         </MDBRow>
     </MDBContainer>

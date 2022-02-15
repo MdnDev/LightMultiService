@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Image, Button, Collapse } from 'react-bootstrap';
-import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'
 import { listProductDetails } from '../actions/productActions';
 import { Link, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
