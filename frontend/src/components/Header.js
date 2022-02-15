@@ -50,12 +50,6 @@ const Header = () => {
                               </Link>
                             </Nav.Item>
 
-                            <Nav.Item>
-                              <Link className="Nav_link" to="/admin/categorylist" style={{ display: "block"}}>
-                                  <div>Catégories</div>
-                              </Link>
-                            </Nav.Item>
-                            
                             <Nav.Link className="Nav_link" style={{ display: "block"}}>
                                 <div onClick={logoutHandler}>Déconnexion</div>
                             </Nav.Link>

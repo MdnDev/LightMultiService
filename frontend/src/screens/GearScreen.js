@@ -63,67 +63,47 @@ const GearScreen = () => {
       };
 
     return (
-        < >
-            <h1 className="py-3">Famille d'article</h1>
+        <>
             <MDBContainer>
-                
-                <MDBRow>
-                        <MDBBreadcrumb className="pt-1">
-                            <MDBBreadcrumbItem>
-                                Element 1
-                            </MDBBreadcrumbItem>
-                            <MDBBreadcrumbItem>
-                                Element 2
-                            </MDBBreadcrumbItem>
-                            <MDBBreadcrumbItem>
-                                Element 3
-                            </MDBBreadcrumbItem>
-                        </MDBBreadcrumb>
-                </MDBRow>
-                    
-                <MDBRow className="py-4">
-                    <MDBCol  xs="12" sm="12" md="9" lg="9" xl="9">
-                    <MDBRow >
-                    {loading ? ( <Loader/> ) : error ? ( <Message variant="danger">{error}</Message> ) : (
-                    <>
-                    {products.map(product => (
-                        <MDBCol key={product._id} sm={12} md={12} lg={4} xl={3}>
-                        <Product product={product} style={{ width: '100%'}}/>
-                        </MDBCol>
-                    ))}
-                    </>
-                )}
-                    </MDBRow>
-
-            
-                    </MDBCol>
-                    
-
+                <h4 className="py-3">Articles</h4>
+                <MDBRow className="py-1">
                     <MDBCol xs="12" sm="12" md="3" lg="3" xl="3">
-                            <SearchBox/>
-                            <h3>Catégories</h3>
-                <div>
-                {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
-                <div>
-                    {categories.map(c => (
-                        <div key={c}>
-                        <Link
-                            className={c === category ? 'active': ''}
-                            to={getFilterUrl({category:c})}>
-                                <Button 
-                                    className="btn btn-primary"
-                                    style={{width: '100%', margin: '2px'}}>
-                                    {c}
-                                </Button>
-                                
-                        </Link>
+                        <SearchBox />  
+                        <h3>Catégories</h3>
+                        <div>
+                            {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
+                            <div>
+                                {categories.map(c => (
+                                <div key={c}>
+                                    <Link
+                                    className={c === category ? 'active': ''}
+                                    to={getFilterUrl({category:c})}>
+                                        <Button 
+                                        className="btn btn-primary"
+                                        style={{width: '100%', margin: '2px'}}>
+                                            {c}
+                                        </Button>
+                                    </Link>
+                                </div>
+                                ))} 
+                            </div>
+                            )}
                         </div>
-                    ))} 
-                </div>
-            )}
-            </div>
                     </MDBCol>
 
+                    <MDBCol  xs="12" sm="12" md="9" lg="9" xl="9">
+                        <MDBRow >
+                            {loading ? ( <Loader/> ) : error ? ( <Message variant="danger">{error}</Message> ) : (
+                            <>
+                            {products.map(product => (
+                                <MDBCol key={product._id} sm={12} md={12} lg={4} xl={3}>
+                                <Product product={product} style={{ width: '100%'}}/>
+                                </MDBCol>
+                            ))}
+                            </>
+                            )}
+                        </MDBRow>
+                    </MDBCol>
                 </MDBRow>
                         
             </MDBContainer>

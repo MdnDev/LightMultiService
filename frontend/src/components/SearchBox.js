@@ -18,7 +18,7 @@ const SearchBox = () => {
   return (
     <MDBCol>
         <MDBRow>
-      <form className="search d-flex input-group w-auto py-2" onSubmit={submitHandler}>
+      <form onSubmit={submitHandler}>
         <div className='row'>
             <input 
                 type="text" 

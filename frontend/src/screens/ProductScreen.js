@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Image, Button, Collapse } from 'react-bootstrap';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'
 import { listProductDetails } from '../actions/productActions';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
@@ -48,6 +48,9 @@ const ProductScreen = () => {
 
     return (
         <Container className="py-5">
+            <Link to='/gear' className='btn btn-light my-3'>
+                Retour
+            </Link>
             <Row >
                 <Col xs="12" sm="12" md="12" lg="6" xl="6">
                    
@@ -59,7 +62,7 @@ const ProductScreen = () => {
                     )}
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                     <Row className="py-3">
-                        <h5 className="py-2">Accessoires fréquemment utilisés avec: {product.name}</h5>
+                        <h5 className="py-2">Accessoires fréquemment utilisés avec {product.name}</h5>
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage} style={{width: '100%'}}/>
                             <h6 className="my-2">{product.accessoryName}</h6>

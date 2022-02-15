@@ -106,12 +106,6 @@ const Footer = () => {
                                   <div>Articles</div>
                               </Link>
                             </Nav.Item>
-
-                            <Nav.Item>
-                              <Link className="Nav_link" to="/admin/categorylist" style={{ display: "block"}}>
-                                  <div>Categories</div>
-                              </Link>
-                            </Nav.Item>
                             
                             <Nav.Link className="Nav_link" style={{ display: "block"}}>
                                 <NavDropdown.Item onClick={logoutHandler}>Déconnexion</NavDropdown.Item>
