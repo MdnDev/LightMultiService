@@ -24,7 +24,7 @@ const Header = () => {
         <Navbar expand="lg" collapseOnSelect
         style={{backgroundColor: '#94F29F'}}>
         <Container >
-            <div style={{border:"1px solid red"}} className="mx-auto" >
+            <div className="mx-auto" >
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse  id="basic-navbar-nav">
                 <NavLink className="Nav_link" to="/"><h4>Acceuil</h4></NavLink>

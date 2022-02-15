@@ -8,7 +8,7 @@ import { listProductCategories, listProducts } from '../actions/productActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Dropdown } from 'react-bootstrap'
+import { Dropdown, Button } from 'react-bootstrap'
 
 
 
@@ -104,17 +104,22 @@ const GearScreen = () => {
                             <h3>Catégories</h3>
                 <div>
                 {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
-                <ul>
+                <div>
                     {categories.map(c => (
-                        <li key={c}>
-                        <Link 
+                        <div key={c}>
+                        <Link
                             className={c === category ? 'active': ''}
                             to={getFilterUrl({category:c})}>
-                                {c}
+                                <Button 
+                                    className="btn btn-primary"
+                                    style={{width: '100%', margin: '2px'}}>
+                                    {c}
+                                </Button>
+                                
                         </Link>
-                        </li>
+                        </div>
                     ))} 
-                </ul>
+                </div>
             )}
             </div>
                     </MDBCol>

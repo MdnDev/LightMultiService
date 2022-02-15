@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import Product from '../components/Product'
 import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 
 const SearchScreen = () => {
@@ -46,26 +47,7 @@ const getFilterUrl = (filter) => {
             )}
         </MDBRow>
         <MDBRow>
-            <MDBCol>
-                <h3>Catégories</h3>
-                <div>
-                {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
-                <ul>
-                    {categories.map(c => (
-                        <li key={c}>
-                            <Link 
-                                className={c === category ? 'active': ''}
-                                to={getFilterUrl({category:c})}>
-                                    {c}
-                            </Link>
-                        </li>
-                    ))} 
-                </ul>
-            )}
-            </div>
-            </MDBCol>
-
-            <MDBRow>
+            <MDBCol xs="12" sm="12" md="9" lg="9" xl="9">
                 {loading ? ( <Loader/> ) : error ? ( <Message variant="danger">{error}</Message> ) : (
                 <>
                     {products.length === 0 && (
@@ -73,14 +55,37 @@ const getFilterUrl = (filter) => {
                     )}
                     <MDBRow>
                         {products.map((product) => (
-                           <MDBCol key={product._id} sm={12} md={12} lg={4} xl={3}>
+                           <MDBCol key={product._id} sm={12} md={9} lg={9} xl={9}>
                            <Product product={product} style={{ width: '100%'}}/>
                            </MDBCol>
                         ))}
                     </MDBRow>
                 </>
                 )}
-            </MDBRow>
+            </MDBCol>
+
+            <MDBCol style={{border: '1px solid black'}}>
+                <h3>Catégories</h3>
+                <div>
+                {loadingCategories ? ( <Loader/> ) : errorCategories ? ( <Message variant="danger">{error}</Message> ) : (
+                <div>
+                    {categories.map(c => (
+                        <div key={c}>
+                            <Link 
+                                className={c === category ? 'active': ''}
+                                to={getFilterUrl({category:c})}>
+                                    <Button
+                                    className="btn btn-primary"
+                                    style={{width: '100%', margin: '2px'}}
+                                    >{c}
+                                    </Button>
+                            </Link>
+                        </div>
+                    ))} 
+                </div>
+            )}
+            </div>
+            </MDBCol>
         </MDBRow>
     </MDBContainer>
   )

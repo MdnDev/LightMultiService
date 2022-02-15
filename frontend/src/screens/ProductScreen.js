@@ -48,13 +48,9 @@ const ProductScreen = () => {
 
     return (
         <Container className="py-5">
-            <Row style={{border: "1px solid blue"}} >
-                <Col style={{border: "1px solid blue"}} xs="12" sm="12" md="12" lg="6" xl="6">
-                    <MDBBreadcrumb className="mx-auto">
-                        <MDBBreadcrumbItem><a href="">Element cliqué</a></MDBBreadcrumbItem>
-                        <MDBBreadcrumbItem><a href="">Element cliqué</a></MDBBreadcrumbItem>
-                        <MDBBreadcrumbItem><a href="">Element cliqué</a></MDBBreadcrumbItem>
-                    </MDBBreadcrumb>
+            <Row >
+                <Col xs="12" sm="12" md="12" lg="6" xl="6">
+                   
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                         <div>
                            <Image src={product.image} alt={product.name} fluid/>
@@ -62,7 +58,7 @@ const ProductScreen = () => {
 
                     )}
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
-                    <Row className="py-3" style={{border: "1px solid blue"}}>
+                    <Row className="py-3">
                         <h5 className="py-2">Accessoires fréquemment utilisés avec: {product.name}</h5>
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage} style={{width: '100%'}}/>
@@ -96,7 +92,7 @@ const ProductScreen = () => {
                  </Col>
                 
 
-                <Col style={{border: "1px solid blue"}} xs="12" sm="12" md="12" lg="6" xl="6">
+                <Col xs="12" sm="12" md="12" lg="6" xl="6">
                     <h3 className="mb-3">{product.name}</h3>
                     <Button
                         onClick={() => setOpen(!open)}
@@ -111,9 +107,7 @@ const ProductScreen = () => {
                     <div className="d-flex my-5">
                         <h5 className="mt-1">Catégories:</h5>
                         <div className="d-flex">
-                            <p>Cat1, </p>
-                            <p>Cat1, </p>
-                            <p>Cat1</p>
+                            {product.category}
                         </div>
                     </div>
                 </Col>

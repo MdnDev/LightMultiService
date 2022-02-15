@@ -29,7 +29,7 @@ const SearchBox = () => {
                 aria-label='Search' 
                 onChange={(e) => setName(e.target.value)}>
             </input>
-            <MDBBtn color="outline-success" type='submit'>
+            <MDBBtn color="outline-primary" type='submit'>
                 Chercher
             </MDBBtn>
         </div>

@@ -20,5 +20,10 @@ main {
   height: 400px;
 }
 
+.link-buttons {
+  color: blue;
+  text-decoration: none;
+}
+
 
 
