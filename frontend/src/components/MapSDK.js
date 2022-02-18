@@ -32,7 +32,7 @@ const MapSDK = () => {
             });
 
     return (
-        <div>
+        <div className="mb-5">
             <div className="sidebar">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
             </div>

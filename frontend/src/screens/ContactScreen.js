@@ -17,19 +17,16 @@ const Contact = () => {
                     <MDBCol sm="12" md="12" lg="12">
                         <img className="text-center"  style={{width: '100%'}} src="../../images/LMS.png" alt="" />
                     </MDBCol>
-                    <MDBCol sm="12" md="12" lg="12">
-                        
-                            <MDBListGroup >
-                                <MDBListGroupItem href="#" color="success">Light Multi Services</MDBListGroupItem>
-                                <MDBListGroupItem href="#">Téléphone: +594 694 23 93 88</MDBListGroupItem>
-                                <MDBListGroupItem href="#">4, résidence Vidal</MDBListGroupItem>
-                                <MDBListGroupItem href="#">260 route de dégrad de cannes</MDBListGroupItem>
-                                <MDBListGroupItem href="#">97354 REMIRE MONTJOLY, Guyane Française</MDBListGroupItem>
-                            </MDBListGroup>
-                        
-                    </MDBCol>
+                   
                 </MDBCol>
             </MDBRow>
+
+            <MDBListGroup className="py-5 mx-auto" style={{backgroundColor: "honeywew"}}>
+                <MDBListGroupItem href="#" >Téléphone: +594 694 23 93 88</MDBListGroupItem>
+                <MDBListGroupItem href="#" >4, résidence Vidal</MDBListGroupItem>
+                <MDBListGroupItem href="#" >260 route de dégrad de cannes</MDBListGroupItem>
+                <MDBListGroupItem href="#" >97354 REMIRE MONTJOLY, Guyane Française</MDBListGroupItem>
+                    </MDBListGroup>
             <MDBRow className="py-5" >
                 <h5 className="text-center">Pour me contacter, veuillez remplir le formulaire ci-dessous:</h5>
 
