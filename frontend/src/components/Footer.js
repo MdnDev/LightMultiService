@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userActions'
 import { NavDropdown } from 'react-bootstrap'
-import ProductCarousel from './ProductCarousel';
+import FooterCarousel from './FooterCarousel';
 
 
 
@@ -18,10 +18,10 @@ const Footer = () => {
         dispatch(logout())
     }
     return (
-        <MDBFooter style={{backgroundColor: '#94F29F'}} className='text-center text-lg-left'>
-        <ProductCarousel/>
+        <MDBFooter style={{backgroundColor: 'snow'}} className='text-center text-lg-left'>
+        <FooterCarousel/>
   
-        <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+        <div className='text-center p-3' style={{ backgroundColor: 'honeydew' }}>
           &copy; {new Date().getFullYear()}{' '}
           <a className='text-dark' href='https://lightmultiservice.com/'>
             lightmultiservice.com

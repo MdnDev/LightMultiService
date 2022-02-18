@@ -22,7 +22,7 @@ const Header = () => {
     return (
         
         <Navbar expand="lg" collapseOnSelect
-        style={{backgroundColor: '#94F29F'}}>
+        style={{backgroundColor: 'honeydew'}}>
         <Container >
             <div className="mx-auto" >
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
