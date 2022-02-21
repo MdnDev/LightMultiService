@@ -18,7 +18,7 @@ const Footer = () => {
         dispatch(logout())
     }
     return (
-        <MDBFooter style={{backgroundColor: 'snow'}} className='text-center text-lg-left'>
+        <MDBFooter  className='bg-dark text-center text-lg-left'>
         <FooterCarousel/>
   
         <div className='text-center p-3' style={{ backgroundColor: 'honeydew' }}>

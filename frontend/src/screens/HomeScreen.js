@@ -49,7 +49,7 @@ const HomeScreen = () => {
                 <Carousel fade style={{width: '100%'}}>
                     <Carousel.Item>
                         <img
-                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
+                        style={{ height: '100%', width: '100%', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/Materiel9.jpg"
                         alt="First slide"
@@ -61,7 +61,7 @@ const HomeScreen = () => {
 
                     <Carousel.Item>
                         <img
-                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
+                        style={{ height: '100%', width: '100%', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner1.jpg"
                         alt="Second slide"
@@ -74,7 +74,7 @@ const HomeScreen = () => {
 
                     <Carousel.Item>
                         <img
-                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
+                        style={{ height: '100%', width: '100%', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner2.jpg"
                         alt="Third slide"
@@ -88,7 +88,7 @@ const HomeScreen = () => {
 
                     <Carousel.Item>
                         <img
-                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
+                        style={{height: '100%', width: '100%', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner3.jpg"
                         alt="Third slide"
@@ -102,7 +102,7 @@ const HomeScreen = () => {
 
                     <Carousel.Item>
                         <img
-                        style={{height: '800px', width: '450px', borderRadius: '0%'}}
+                        style={{height: '100%', width: '100%', borderRadius: '0%'}}
                         className="d-block w-100"
                         src="../../images/protPartner4.jpg"
                         alt="Third slide"
