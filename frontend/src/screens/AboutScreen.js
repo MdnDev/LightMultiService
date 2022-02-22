@@ -1,6 +1,5 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
-import { MDBRow, MDBCol, MDBContainer} from "mdb-react-ui-kit";
+import { MDBRow } from "mdb-react-ui-kit";
 import AboutCarousel from '../components/AboutCarousel';
 
 

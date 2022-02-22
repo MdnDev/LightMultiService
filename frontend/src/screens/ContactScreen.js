@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBListGroup, MDBListGroupItem } from 'mdb-react-ui-kit'
 import MapSDK from '../components/MapSDK';
 
@@ -30,7 +30,7 @@ const Contact = () => {
             <MDBRow className="py-5" >
                 <h5 className="text-center">Pour me contacter, veuillez remplir le formulaire ci-dessous:</h5>
 
-                <Form className="py-3" method="POST">
+                <form className="py-3" action="https://formsubmit.co/wilfried.maudonpro@gmail.com" method="POST">
                     <MDBRow >
                         <MDBCol md="6" >
                             <Form.Label className="my-2">Nom</Form.Label>
@@ -56,19 +56,21 @@ const Contact = () => {
                     
                     <MDBRow md="12">
                         <p className="mt-3">Message</p>
-                        <MDBInput className="mb-2" id='textAreaExample' textarea rows={4} />
+                        <MDBInput className="mb-2" type="text" id='message' name="message" textarea rows={4} />
                     </MDBRow>
                     <MDBRow>
+                        <input type="text" name="_honey" style={{display: 'none'}}/>
+                        <input type="hidden" name="_template" value="table"/>
                         <MDBCol  md="12">
                             <div className="text-center">
-                                <MDBBtn outline color="success" className="mx-auto text-center">
+                                <Button className="btn btn-success mx-auto text-center">
                                     Envoyer
-                                </MDBBtn>
+                                </Button>
                             </div>
                         </MDBCol>
                     </MDBRow>
                     
-                </Form>
+                </form>
                 
             </MDBRow>
         </MDBContainer>

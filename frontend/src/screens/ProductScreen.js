@@ -61,7 +61,6 @@ const ProductScreen = () => {
                     )}
                     {loading ? ( <Loader />) : error ? ( <Message variant="danger">{error}</Message> ) : (
                     <Row className="py-3">
-                        <h5 className="py-2">Accessoires fréquemment utilisés avec {product.name}</h5>
                         <Col sm={12} md={12} lg={4} xl={3}>
                             <Image src={product.accessoryImage} style={{width: '100%'}}/>
                             <h6 className="my-2">{product.accessoryName}</h6>
@@ -101,7 +100,7 @@ const ProductScreen = () => {
                         aria-controls="example-collapse-text"
                         aria-expanded={open}
                         variant='outline-dark'>
-                        click
+                        afficher
                     </Button>
                     <Collapse in={open}>
                         <p>{product.description}</p>

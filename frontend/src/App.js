@@ -11,7 +11,7 @@ import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import LoginScreen from './screens/LoginScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import SearchScreen from './screens/SearchScreen'
+import SearchScreen from './screens/SearchScreen';
 
 function App() {
   return (

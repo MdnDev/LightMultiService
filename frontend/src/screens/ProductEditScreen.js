@@ -261,7 +261,7 @@ const ProductEditScreen = () => {
         Retour
       </Link>
       <FormContainer>
-        <h1>Edit Product</h1>
+        <h1>Créer/ Modifier un article</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
@@ -271,7 +271,7 @@ const ProductEditScreen = () => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Nom</Form.Label>
               <Form.Control
                 type='name'
                 placeholder='Enter name'
@@ -300,7 +300,7 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='brand'>
-              <Form.Label>Brand</Form.Label>
+              <Form.Label>Marque</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter brand'
@@ -312,7 +312,7 @@ const ProductEditScreen = () => {
            
 
             <Form.Group controlId='category'>
-              <Form.Label>Category</Form.Label>
+              <Form.Label>Categorie</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter category'
@@ -336,7 +336,7 @@ const ProductEditScreen = () => {
                 {/* FIRST ACCESSORY */}
                 <h5 className="my-4">Premier accessoire</h5>
                 <Form.Group controlId='accessoryName'>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Nom</Form.Label>
                   <Form.Control
                     type='name'
                     placeholder='Enter name'
@@ -367,7 +367,7 @@ const ProductEditScreen = () => {
                 {/* SECOND ACCESSORY */}
                 <h5 className="my-4">Deuxième accessoire</h5>
                 <Form.Group controlId='accessoryName'>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Nom</Form.Label>
                   <Form.Control
                     type='name'
                     placeholder='Enter name'
@@ -398,7 +398,7 @@ const ProductEditScreen = () => {
                 {/* THIRD ACCESSORY */}
                 <h5 className="my-4">Troisème accessoire</h5>
                 <Form.Group controlId='accessoryName'>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Nom</Form.Label>
                   <Form.Control
                     type='name'
                     placeholder='Enter name'
@@ -428,7 +428,7 @@ const ProductEditScreen = () => {
                 {/* FOURTH ACCESSORY */}
                 <h5 className="my-4">Quatrième accessoire</h5>
                 <Form.Group controlId='accessoryName'>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Nom</Form.Label>
                   <Form.Control
                     type='name'
                     placeholder='Enter name'
@@ -458,7 +458,7 @@ const ProductEditScreen = () => {
                 {/* FIFTH ACCESSORY */}
                 <h5 className="my-4">Cinquième accessoire</h5>
                 <Form.Group controlId='accessoryName'>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Nom</Form.Label>
                   <Form.Control
                     type='name'
                     placeholder='Enter name'
